@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.uha.miage.projet.java.metiers.associations;
+package edu.uha.miage.projet.java.core.metier.associations;
 
-import edu.uha.miage.projet.java.metiers.Media;
-import edu.uha.miage.projet.java.metiers.Utilisateur;
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Entity;

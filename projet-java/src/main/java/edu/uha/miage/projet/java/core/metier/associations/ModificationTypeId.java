@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.uha.miage.projet.java.metiers.associations;
+package edu.uha.miage.projet.java.core.metier.associations;
 
 import java.io.Serializable;
 
@@ -10,10 +10,10 @@ import java.io.Serializable;
  *
  * @author quentin
  */
-public class ModificationMediaId implements Serializable{
+public class ModificationTypeId implements Serializable{
     
     private int utilisateur;
-    private int media;
+    private int type;
 
     public int getUtilisateur() {
         return utilisateur;
@@ -23,24 +23,24 @@ public class ModificationMediaId implements Serializable{
         this.utilisateur = utilisateur;
     }
 
-    public int getMedia() {
-        return media;
+    public int getType() {
+        return type;
     }
 
-    public void setMedia(int media) {
-        this.media = media;
+    public void setType(int type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "ModificationMediaId{" + "utilisateur=" + utilisateur + ", media=" + media + '}';
+        return "ModificationTypeId{" + "utilisateur=" + utilisateur + ", type=" + type + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.utilisateur;
-        hash = 97 * hash + this.media;
+        int hash = 7;
+        hash = 59 * hash + this.utilisateur;
+        hash = 59 * hash + this.type;
         return hash;
     }
 
@@ -55,17 +55,14 @@ public class ModificationMediaId implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ModificationMediaId other = (ModificationMediaId) obj;
+        final ModificationTypeId other = (ModificationTypeId) obj;
         if (this.utilisateur != other.utilisateur) {
             return false;
         }
-        if (this.media != other.media) {
+        if (this.type != other.type) {
             return false;
         }
         return true;
     }
 
-    
-    
-    
 }

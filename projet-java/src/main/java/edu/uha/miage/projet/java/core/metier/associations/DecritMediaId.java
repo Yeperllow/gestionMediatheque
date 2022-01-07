@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.uha.miage.projet.java.metiers.associations;
+package edu.uha.miage.projet.java.core.metier.associations;
 
 import java.io.Serializable;
 
@@ -10,37 +10,37 @@ import java.io.Serializable;
  *
  * @author quentin
  */
-public class ModificationTypeId implements Serializable{
+public class DecritMediaId implements Serializable {
     
-    private int utilisateur;
-    private int type;
+    private int tag;
+    private int media;
 
-    public int getUtilisateur() {
-        return utilisateur;
+    public int getTag() {
+        return tag;
     }
 
-    public void setUtilisateur(int utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setTag(int tag) {
+        this.tag = tag;
     }
 
-    public int getType() {
-        return type;
+    public int getMedia() {
+        return media;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setMedia(int media) {
+        this.media = media;
     }
 
     @Override
     public String toString() {
-        return "ModificationTypeId{" + "utilisateur=" + utilisateur + ", type=" + type + '}';
+        return "DecritMediaId{" + "tag=" + tag + ", media=" + media + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + this.utilisateur;
-        hash = 59 * hash + this.type;
+        hash = 29 * hash + this.tag;
+        hash = 29 * hash + this.media;
         return hash;
     }
 
@@ -55,14 +55,15 @@ public class ModificationTypeId implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ModificationTypeId other = (ModificationTypeId) obj;
-        if (this.utilisateur != other.utilisateur) {
+        final DecritMediaId other = (DecritMediaId) obj;
+        if (this.tag != other.tag) {
             return false;
         }
-        if (this.type != other.type) {
+        if (this.media != other.media) {
             return false;
         }
         return true;
     }
-
+    
+    
 }

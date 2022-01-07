@@ -2,17 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.uha.miage.projet.java.metiers.associations;
+package edu.uha.miage.projet.java.core.metier.associations;
 
-import edu.uha.miage.projet.java.metiers.Type;
-import edu.uha.miage.projet.java.metiers.Utilisateur;
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -22,9 +21,9 @@ import javax.validation.constraints.NotNull;
  * @author quentin
  */
 @Entity
-@Table(name = "Modifie_type")
-@IdClass(ModificationTypeId.class)
-public class ModificationType implements Serializable {
+@Table(name = "Modifie_media")
+@IdClass(ModificationMediaId.class)
+public class ModificationMedia implements Serializable{
     
     @Id
     @ManyToOne
@@ -33,16 +32,16 @@ public class ModificationType implements Serializable {
     
     @Id
     @ManyToOne
-    @JoinColumn(name = "id_type", referencedColumnName = "id")
-    private Type type;
+    @JoinColumn(name = "id_media", referencedColumnName = "id")
+    private Media media;
     
     @NotNull
     private Date date_modification;
     
-    public ModificationType() {
+    public ModificationMedia() {
     }
     
-    public ModificationType(Date date_modification) {
+    public ModificationMedia(Date date_modification) {
         this.date_modification = date_modification;
     }
 
@@ -54,12 +53,12 @@ public class ModificationType implements Serializable {
         this.utilisateur = utilisateur;
     }
 
-    public Type getType() {
-        return type;
+    public Media getMedia() {
+        return media;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setMedia(Media media) {
+        this.media = media;
     }
 
     public Date getDate_modification() {
@@ -72,7 +71,7 @@ public class ModificationType implements Serializable {
 
     @Override
     public String toString() {
-        return "ModificationType{" + "utilisateur=" + utilisateur + ", type=" + type + ", date_modification=" + date_modification + '}';
+        return "ModificationMedia{" + "utilisateur=" + utilisateur + ", media=" + media + ", date_modification=" + date_modification + '}';
     }
     
     

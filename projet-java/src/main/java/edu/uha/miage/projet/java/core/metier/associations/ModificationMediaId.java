@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.uha.miage.projet.java.metiers.associations;
+package edu.uha.miage.projet.java.core.metier.associations;
 
 import java.io.Serializable;
 
@@ -10,17 +10,17 @@ import java.io.Serializable;
  *
  * @author quentin
  */
-public class DecritMediaId implements Serializable {
+public class ModificationMediaId implements Serializable{
     
-    private int tag;
+    private int utilisateur;
     private int media;
 
-    public int getTag() {
-        return tag;
+    public int getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setTag(int tag) {
-        this.tag = tag;
+    public void setUtilisateur(int utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     public int getMedia() {
@@ -33,14 +33,14 @@ public class DecritMediaId implements Serializable {
 
     @Override
     public String toString() {
-        return "DecritMediaId{" + "tag=" + tag + ", media=" + media + '}';
+        return "ModificationMediaId{" + "utilisateur=" + utilisateur + ", media=" + media + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.tag;
-        hash = 29 * hash + this.media;
+        int hash = 3;
+        hash = 97 * hash + this.utilisateur;
+        hash = 97 * hash + this.media;
         return hash;
     }
 
@@ -55,8 +55,8 @@ public class DecritMediaId implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final DecritMediaId other = (DecritMediaId) obj;
-        if (this.tag != other.tag) {
+        final ModificationMediaId other = (ModificationMediaId) obj;
+        if (this.utilisateur != other.utilisateur) {
             return false;
         }
         if (this.media != other.media) {
@@ -64,6 +64,8 @@ public class DecritMediaId implements Serializable {
         }
         return true;
     }
+
+    
     
     
 }
