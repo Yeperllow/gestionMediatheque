@@ -27,4 +27,6 @@ public interface TypeService {
     //Par ordre décroissant
     List<Type> findAllByOrderByTypeDesc();
     List<Type> findAllByOrderByDateCreationDesc();
+    
+    List<Type> findByTypeContaining(String str);
 }

@@ -27,4 +27,6 @@ public interface MediaService {
     //Par ordre décroissant
     List<Media> findAllByOrderByNomDesc();
     List<Media> findAllByOrderByDateCreationDesc();
+    
+    List<Media> findByNomContaining(String str);
 }

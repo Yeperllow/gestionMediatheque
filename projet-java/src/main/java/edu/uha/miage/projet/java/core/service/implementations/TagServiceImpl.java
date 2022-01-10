@@ -74,5 +74,10 @@ public class TagServiceImpl implements TagService{
     public List<Tag> findAllByOrderByDateCreationDesc() {
         return (List<Tag>) tagRepository.findAllByOrderByDateCreationDesc();
     }
+
+    @Override
+    public List<Tag> findByTagContaining(String str) {
+        return (List<Tag>) tagRepository.findByTagContaining(str);
+    }
     
 }

@@ -75,4 +75,9 @@ public class TypeServiceImpl implements TypeService{
         return (List<Type>) typeRepository.findAllByOrderByDateCreationDesc();
     }
 
+    @Override
+    public List<Type> findByTypeContaining(String str) {
+        return (List<Type>) typeRepository.findByTypeContaining(str);
+    }
+
 }

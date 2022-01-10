@@ -23,4 +23,6 @@ public interface MediaRepository extends JpaRepository<Media, Integer>{
     //Par ordre décroissant
     List<Media> findAllByOrderByNomDesc();
     List<Media> findAllByOrderByDateCreationDesc();
+    
+    List<Media> findByNomContaining(String str);
 }

@@ -34,4 +34,6 @@ public interface UtilisateurService {
     List<Utilisateur> findAllByOrderByNomDescPrenomDesc();
     List<Utilisateur> findAllByOrderByDateCreationDesc();
     List<Utilisateur> findAllByOrderByDateModificationDesc();
+    
+    List<Utilisateur> findByLoginOrNomOrPrenomContaining(String str);
 }

@@ -27,4 +27,6 @@ public interface TagService {
     //Par ordre décroissant
     List<Tag> findAllByOrderByTagDesc();
     List<Tag> findAllByOrderByDateCreationDesc();
+    
+    List<Tag> findByTagContaining(String str);
 }

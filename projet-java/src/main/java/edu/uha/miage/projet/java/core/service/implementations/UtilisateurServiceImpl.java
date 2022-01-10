@@ -109,5 +109,10 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     public List<Utilisateur> findAllByOrderByDateModificationDesc() {
         return (List<Utilisateur>) utilisateurRepository.findAllByOrderByDateModificationDesc();
     }
+
+    @Override
+    public List<Utilisateur> findByLoginOrNomOrPrenomContaining(String str) {
+        return (List<Utilisateur>) utilisateurRepository.findByLoginOrNomOrPrenomContaining(str);
+    }
     
 }

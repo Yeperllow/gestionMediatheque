@@ -74,5 +74,10 @@ public class MediaServiceImpl implements MediaService {
     public List<Media> findAllByOrderByDateCreationDesc() {
         return (List<Media>) mediaRepository.findAllByOrderByDateCreationDesc();
     }
+
+    @Override
+    public List<Media> findByNomContaining(String str) {
+        return (List<Media>) mediaRepository.findByNomContaining(str);
+    }
             
 }
