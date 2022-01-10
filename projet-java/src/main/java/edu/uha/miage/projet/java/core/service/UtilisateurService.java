@@ -20,7 +20,7 @@ public interface UtilisateurService {
     Optional<Utilisateur> findByLogin(String login);
     List<Utilisateur> findByNom(String nom);
     List<Utilisateur> findByPrenom(String prenom);
-    List<Utilisateur> findByNomAndByPrenom(String nom, String prenom);
+    List<Utilisateur> findByNomAndPrenom(String nom, String prenom);
     List<Utilisateur> findByEtatTrue();
     List<Utilisateur> findByEtatFalse();
     
@@ -35,5 +35,5 @@ public interface UtilisateurService {
     List<Utilisateur> findAllByOrderByDateCreationDesc();
     List<Utilisateur> findAllByOrderByDateModificationDesc();
     
-    List<Utilisateur> findByLoginOrNomOrPrenomContaining(String str);
+    List<Utilisateur> findByLoginContainingOrNomContainingOrPrenomContaining(String login, String nom, String prenom);
 }

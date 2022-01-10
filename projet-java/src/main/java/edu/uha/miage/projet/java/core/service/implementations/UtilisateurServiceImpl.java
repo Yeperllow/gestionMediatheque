@@ -56,8 +56,8 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     }
 
     @Override
-    public List<Utilisateur> findByNomAndByPrenom(String nom, String prenom) {
-        return utilisateurRepository.findByNomAndByPrenom(nom, prenom);
+    public List<Utilisateur> findByNomAndPrenom(String nom, String prenom) {
+        return utilisateurRepository.findByNomAndPrenom(nom, prenom);
     }
 
     @Override
@@ -111,8 +111,8 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     }
 
     @Override
-    public List<Utilisateur> findByLoginOrNomOrPrenomContaining(String str) {
-        return (List<Utilisateur>) utilisateurRepository.findByLoginOrNomOrPrenomContaining(str);
+    public List<Utilisateur> findByLoginContainingOrNomContainingOrPrenomContaining(String login, String nom, String prenom) {
+        return (List<Utilisateur>) utilisateurRepository.findByLoginContainingOrNomContainingOrPrenomContaining(login, nom, prenom);
     }
     
 }
