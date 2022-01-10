@@ -4,6 +4,8 @@
  */
 package edu.uha.miage.projet.java.core.service.associations;
 
+import edu.uha.miage.projet.java.core.metier.Type;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.metier.associations.ModificationType;
 import edu.uha.miage.projet.java.core.metier.associations.ModificationTypeId;
 import java.util.List;
@@ -18,4 +20,7 @@ public interface ModificationTypeService {
     void delete(ModificationTypeId id);
     List<ModificationType> findAll();
     Optional<ModificationType> findById(ModificationTypeId id);
+    
+    List<ModificationType> findByUtilisateur(Utilisateur utilisateur);
+    List<ModificationType> findByType(Type type);
 }

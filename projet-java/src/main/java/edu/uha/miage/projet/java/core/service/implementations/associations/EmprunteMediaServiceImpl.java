@@ -4,6 +4,8 @@
  */
 package edu.uha.miage.projet.java.core.service.implementations.associations;
 
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.metier.associations.EmprunteMedia;
 import edu.uha.miage.projet.java.core.metier.associations.EmprunteMediaId;
 import edu.uha.miage.projet.java.core.repository.associations.EmprunteMediaRepository;
@@ -44,6 +46,16 @@ public class EmprunteMediaServiceImpl implements EmprunteMediaService{
     @Override
     public List<EmprunteMedia> findByEtat(boolean etat) {
         return emprunteMediaRepository.findByEtat(etat);
+    }
+
+    @Override
+    public List<EmprunteMedia> findByUtilisateur(Utilisateur utilisateur) {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findByUtilisateur(utilisateur);
+    }
+
+    @Override
+    public List<EmprunteMedia> findByMedia(Media media) {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findByMedia(media);
     }
     
 }

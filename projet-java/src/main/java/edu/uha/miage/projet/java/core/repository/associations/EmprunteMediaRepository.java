@@ -4,6 +4,8 @@
  */
 package edu.uha.miage.projet.java.core.repository.associations;
 
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.metier.associations.EmprunteMedia;
 import edu.uha.miage.projet.java.core.metier.associations.EmprunteMediaId;
 import java.util.List;
@@ -15,4 +17,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface EmprunteMediaRepository extends JpaRepository<EmprunteMedia, EmprunteMediaId>{
     List<EmprunteMedia> findByEtat(boolean etat);
+    List<EmprunteMedia> findByUtilisateur(Utilisateur utilisateur);
+    List<EmprunteMedia> findByMedia(Media media);
 }

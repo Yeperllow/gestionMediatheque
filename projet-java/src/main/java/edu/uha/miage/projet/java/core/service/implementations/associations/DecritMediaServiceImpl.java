@@ -4,6 +4,8 @@
  */
 package edu.uha.miage.projet.java.core.service.implementations.associations;
 
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Tag;
 import edu.uha.miage.projet.java.core.metier.associations.DecritMedia;
 import edu.uha.miage.projet.java.core.metier.associations.DecritMediaId;
 import edu.uha.miage.projet.java.core.repository.associations.DecritMediaRepository;
@@ -44,6 +46,16 @@ public class DecritMediaServiceImpl implements DecritMediaService{
     @Override
     public List<DecritMedia> findByEtat(boolean etat) {
         return (List<DecritMedia>) decritMediaRepository.findByEtat(etat);
+    }
+
+    @Override
+    public List<DecritMedia> findByTag(Tag tag) {
+        return (List<DecritMedia>) decritMediaRepository.findByTag(tag);
+    }
+
+    @Override
+    public List<DecritMedia> findByMedia(Media media) {
+        return (List<DecritMedia>) decritMediaRepository.findByMedia(media);
     }
     
 }

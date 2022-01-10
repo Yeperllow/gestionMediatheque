@@ -4,6 +4,8 @@
  */
 package edu.uha.miage.projet.java.core.service.implementations.associations;
 
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.metier.associations.ModificationMedia;
 import edu.uha.miage.projet.java.core.metier.associations.ModificationMediaId;
 import edu.uha.miage.projet.java.core.repository.associations.ModificationMediaRepository;
@@ -39,6 +41,16 @@ public class ModificationMediaServiceImpl implements ModificationMediaService{
     @Override
     public Optional<ModificationMedia> findById(ModificationMediaId id) {
         return modificationMediaRepository.findById(id);
+    }
+
+    @Override
+    public List<ModificationMedia> findByUtilisateur(Utilisateur utilisateur) {
+        return (List<ModificationMedia>) modificationMediaRepository.findByUtilisateur(utilisateur);
+    }
+
+    @Override
+    public List<ModificationMedia> findByMedia(Media media) {
+        return (List<ModificationMedia>) modificationMediaRepository.findByMedia(media);
     }
     
 }

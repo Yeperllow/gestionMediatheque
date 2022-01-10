@@ -4,6 +4,8 @@
  */
 package edu.uha.miage.projet.java.core.service.associations;
 
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Tag;
 import edu.uha.miage.projet.java.core.metier.associations.DecritMedia;
 import edu.uha.miage.projet.java.core.metier.associations.DecritMediaId;
 import java.util.List;
@@ -19,4 +21,7 @@ public interface DecritMediaService {
     List<DecritMedia> findAll();
     Optional<DecritMedia> findById(DecritMediaId id);
     List<DecritMedia> findByEtat(boolean etat);
+    
+    List<DecritMedia> findByTag(Tag tag);
+    List<DecritMedia> findByMedia(Media media);
 }

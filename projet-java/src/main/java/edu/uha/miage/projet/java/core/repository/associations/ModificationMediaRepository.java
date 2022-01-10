@@ -4,8 +4,11 @@
  */
 package edu.uha.miage.projet.java.core.repository.associations;
 
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.metier.associations.ModificationMedia;
 import edu.uha.miage.projet.java.core.metier.associations.ModificationMediaId;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +16,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author quentin
  */
 public interface ModificationMediaRepository extends JpaRepository<ModificationMedia, ModificationMediaId>{
-    
+    List<ModificationMedia> findByUtilisateur(Utilisateur utilisateur);
+    List<ModificationMedia> findByMedia(Media media);
 }

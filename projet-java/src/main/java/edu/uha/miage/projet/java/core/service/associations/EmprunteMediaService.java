@@ -4,6 +4,8 @@
  */
 package edu.uha.miage.projet.java.core.service.associations;
 
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.metier.associations.EmprunteMedia;
 import edu.uha.miage.projet.java.core.metier.associations.EmprunteMediaId;
 import java.util.List;
@@ -19,4 +21,7 @@ public interface EmprunteMediaService {
     List<EmprunteMedia> findAll();
     Optional<EmprunteMedia> findById(EmprunteMediaId id);
     List<EmprunteMedia> findByEtat(boolean etat);
+    
+    List<EmprunteMedia> findByUtilisateur(Utilisateur utilisateur);
+    List<EmprunteMedia> findByMedia(Media media);
 }

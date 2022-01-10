@@ -4,6 +4,8 @@
  */
 package edu.uha.miage.projet.java.core.service.associations;
 
+import edu.uha.miage.projet.java.core.metier.Media;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.metier.associations.ModificationMedia;
 import edu.uha.miage.projet.java.core.metier.associations.ModificationMediaId;
 import java.util.List;
@@ -18,4 +20,7 @@ public interface ModificationMediaService {
     void delete(ModificationMediaId id);
     List<ModificationMedia> findAll();
     Optional<ModificationMedia> findById(ModificationMediaId id);
+    
+    List<ModificationMedia> findByUtilisateur(Utilisateur utilisateur);
+    List<ModificationMedia> findByMedia(Media media);
 }
