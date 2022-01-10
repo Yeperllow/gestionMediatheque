@@ -44,8 +44,13 @@ public class EmprunteMediaServiceImpl implements EmprunteMediaService{
     }
 
     @Override
-    public List<EmprunteMedia> findByEtat(boolean etat) {
-        return emprunteMediaRepository.findByEtat(etat);
+    public List<EmprunteMedia> findByEtatTrue() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findByEtatTrue();
+    }
+
+    @Override
+    public List<EmprunteMedia> findByEtatFalse() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findByEtatFalse();
     }
 
     @Override

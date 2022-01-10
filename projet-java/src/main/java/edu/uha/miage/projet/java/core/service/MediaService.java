@@ -18,5 +18,6 @@ public interface MediaService {
     List<Media> findAll();
     Optional<Media> findById(int id);
     List<Media> findByNom(String nom);
-    List<Media> findByEtat(boolean etat);
+    List<Media> findByEtatTrue();
+    List<Media> findByEtatFalse();
 }

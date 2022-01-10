@@ -44,8 +44,13 @@ public class DecritMediaServiceImpl implements DecritMediaService{
     }
 
     @Override
-    public List<DecritMedia> findByEtat(boolean etat) {
-        return (List<DecritMedia>) decritMediaRepository.findByEtat(etat);
+    public List<DecritMedia> findByEtatTrue() {
+        return (List<DecritMedia>) decritMediaRepository.findByEtatTrue();
+    }
+
+    @Override
+    public List<DecritMedia> findByEtatFalse() {
+        return (List<DecritMedia>) decritMediaRepository.findByEtatFalse();
     }
 
     @Override

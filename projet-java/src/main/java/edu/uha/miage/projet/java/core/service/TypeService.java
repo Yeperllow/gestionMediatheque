@@ -18,5 +18,6 @@ public interface TypeService {
     List<Type> findAll();
     Optional<Type> findById(int id);
     Optional<Type> findByType(String type);
-    List<Type> findByEtat(boolean etat);
+    List<Type> findByEtatTrue();
+    List<Type> findByEtatFalse();
 }

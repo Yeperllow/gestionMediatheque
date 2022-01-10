@@ -46,8 +46,13 @@ public class TagServiceImpl implements TagService{
     }
 
     @Override
-    public List<Tag> findByEtat(boolean etat) {
-        return tagRepository.findByEtat(etat);
+    public List<Tag> findByEtatTrue() {
+        return (List<Tag>) tagRepository.findByEtatTrue();
+    }
+
+    @Override
+    public List<Tag> findByEtatFalse() {
+        return (List<Tag>) tagRepository.findByEtatFalse();
     }
     
 }

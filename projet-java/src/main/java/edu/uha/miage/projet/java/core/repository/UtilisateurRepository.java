@@ -18,5 +18,6 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Intege
     List<Utilisateur> findByNom(String nom);
     List<Utilisateur> findByPrenom(String prenom);
     List<Utilisateur> findByNomAndByPrenom(String nom, String prenom);
-    List<Utilisateur> findByEtat(boolean etat);
+    List<Utilisateur> findByEtatTrue();
+    List<Utilisateur> findByEtatFalse();
 }

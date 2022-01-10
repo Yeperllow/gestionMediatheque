@@ -61,8 +61,13 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     }
 
     @Override
-    public List<Utilisateur> findByEtat(boolean etat) {
-        return utilisateurRepository.findByEtat(etat);
+    public List<Utilisateur> findByEtatTrue() {
+        return (List<Utilisateur>) utilisateurRepository.findByEtatTrue();
+    }
+
+    @Override
+    public List<Utilisateur> findByEtatFalse() {
+        return (List<Utilisateur>) utilisateurRepository.findByEtatFalse();
     }
     
 }

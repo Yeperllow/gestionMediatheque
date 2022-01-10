@@ -46,7 +46,12 @@ public class TypeServiceImpl implements TypeService{
     }
 
     @Override
-    public List<Type> findByEtat(boolean etat) {
-        return typeRepository.findByEtat(etat);
+    public List<Type> findByEtatTrue() {
+        return (List<Type>) typeRepository.findByEtatTrue();
+    }
+
+    @Override
+    public List<Type> findByEtatFalse() {
+        return (List<Type>) typeRepository.findByEtatFalse();
     }
 }

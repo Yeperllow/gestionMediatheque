@@ -46,8 +46,13 @@ public class MediaServiceImpl implements MediaService {
     }
 
     @Override
-    public List<Media> findByEtat(boolean etat) {
-        return mediaRepository.findByEtat(etat);
+    public List<Media> findByEtatTrue() {
+        return (List<Media>) mediaRepository.findByEtatTrue();
+    }
+
+    @Override
+    public List<Media> findByEtatFalse() {
+        return (List<Media>) mediaRepository.findByEtatFalse();
     }
             
 }

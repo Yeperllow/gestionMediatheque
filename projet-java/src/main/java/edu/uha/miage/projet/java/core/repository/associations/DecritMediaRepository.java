@@ -16,7 +16,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author quentin
  */
 public interface DecritMediaRepository extends JpaRepository<DecritMedia, DecritMediaId>{
-    List<DecritMedia> findByEtat(boolean etat);
+    List<DecritMedia> findByEtatTrue();
+    List<DecritMedia> findByEtatFalse();
     List<DecritMedia> findByTag(Tag tag);
     List<DecritMedia> findByMedia(Media media);
 }

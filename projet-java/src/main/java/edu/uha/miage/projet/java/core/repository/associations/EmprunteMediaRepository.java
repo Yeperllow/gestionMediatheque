@@ -16,7 +16,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author quentin
  */
 public interface EmprunteMediaRepository extends JpaRepository<EmprunteMedia, EmprunteMediaId>{
-    List<EmprunteMedia> findByEtat(boolean etat);
+    List<EmprunteMedia> findByEtatTrue();
+    List<EmprunteMedia> findByEtatFalse();
     List<EmprunteMedia> findByUtilisateur(Utilisateur utilisateur);
     List<EmprunteMedia> findByMedia(Media media);
 }

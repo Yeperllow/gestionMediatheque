@@ -18,5 +18,6 @@ public interface TagService {
     List<Tag> findAll();
     Optional<Tag> findById(int id);
     Optional<Tag> findByTag(String tag);
-    List<Tag> findByEtat(boolean etat);
+    List<Tag> findByEtatTrue();
+    List<Tag> findByEtatFalse();
 }

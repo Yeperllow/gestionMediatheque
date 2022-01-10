@@ -20,7 +20,8 @@ public interface EmprunteMediaService {
     void delete(EmprunteMediaId id);
     List<EmprunteMedia> findAll();
     Optional<EmprunteMedia> findById(EmprunteMediaId id);
-    List<EmprunteMedia> findByEtat(boolean etat);
+    List<EmprunteMedia> findByEtatTrue();
+    List<EmprunteMedia> findByEtatFalse();
     
     List<EmprunteMedia> findByUtilisateur(Utilisateur utilisateur);
     List<EmprunteMedia> findByMedia(Media media);

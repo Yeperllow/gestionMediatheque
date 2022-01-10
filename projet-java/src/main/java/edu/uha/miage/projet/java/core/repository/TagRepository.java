@@ -15,5 +15,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface TagRepository extends JpaRepository<Tag, Integer>{
     Optional<Tag> findByTag(String tag);
-    List<Tag> findByEtat(boolean etat);
+    List<Tag> findByEtatTrue();
+    List<Tag> findByEtatFalse();
 }

@@ -20,7 +20,8 @@ public interface DecritMediaService {
     void delete(DecritMediaId id);
     List<DecritMedia> findAll();
     Optional<DecritMedia> findById(DecritMediaId id);
-    List<DecritMedia> findByEtat(boolean etat);
+    List<DecritMedia> findByEtatTrue();
+    List<DecritMedia> findByEtatFalse();
     
     List<DecritMedia> findByTag(Tag tag);
     List<DecritMedia> findByMedia(Media media);

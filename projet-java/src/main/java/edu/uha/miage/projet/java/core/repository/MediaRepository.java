@@ -14,5 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface MediaRepository extends JpaRepository<Media, Integer>{
     List<Media> findByNom(String nom);
-    List<Media> findByEtat(boolean etat);
+    List<Media> findByEtatTrue();
+    List<Media> findByEtatFalse();
 }
