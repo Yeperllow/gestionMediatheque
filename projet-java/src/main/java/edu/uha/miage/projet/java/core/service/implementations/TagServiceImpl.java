@@ -55,4 +55,24 @@ public class TagServiceImpl implements TagService{
         return (List<Tag>) tagRepository.findByEtatFalse();
     }
     
+    @Override
+    public List<Tag> findAllByOrderByTag() {
+        return (List<Tag>) tagRepository.findAllByOrderByTag();
+    }
+
+    @Override
+    public List<Tag> findAllByOrderByDateCreation() {
+        return (List<Tag>) tagRepository.findAllByOrderByDateCreation();
+    }
+    
+    @Override
+    public List<Tag> findAllByOrderByTagDesc() {
+        return (List<Tag>) tagRepository.findAllByOrderByTagDesc();
+    }
+
+    @Override
+    public List<Tag> findAllByOrderByDateCreationDesc() {
+        return (List<Tag>) tagRepository.findAllByOrderByDateCreationDesc();
+    }
+    
 }

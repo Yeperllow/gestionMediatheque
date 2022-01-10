@@ -45,5 +45,35 @@ public class RoleServiceImpl implements RoleService{
     public Optional<Role> findByRole(String role) {
         return roleRepository.findByRole(role);
     }
+
+    @Override
+    public List<Role> findAllByOrderByRole() {
+        return (List<Role>) roleRepository.findAllByOrderByRole();
+    }
+
+    @Override
+    public List<Role> findAllByOrderByDateCreation() {
+        return (List<Role>) roleRepository.findAllByOrderByDateCreation();
+    }
+
+    @Override
+    public List<Role> findAllByOrderByDateModification() {
+        return (List<Role>) roleRepository.findAllByOrderByDateModification();
+    }
+
+    @Override
+    public List<Role> findAllByOrderByRoleDesc() {
+        return (List<Role>) roleRepository.findAllByOrderByRoleDesc();
+    }
+
+    @Override
+    public List<Role> findAllByOrderByDateCreationDesc() {
+        return (List<Role>) roleRepository.findAllByOrderByDateCreationDesc();
+    }
+
+    @Override
+    public List<Role> findAllByOrderByDateModificationDesc() {
+        return (List<Role>) roleRepository.findAllByOrderByDateModificationDesc();
+    }
     
 }

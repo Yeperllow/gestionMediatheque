@@ -23,4 +23,9 @@ public interface ModificationMediaService {
     
     List<ModificationMedia> findByUtilisateur(Utilisateur utilisateur);
     List<ModificationMedia> findByMedia(Media media);
+    
+    //Par ordre croissant
+    List<ModificationMedia> findAllByOrderByDateModification();
+    //Par ordre décroissant
+    List<ModificationMedia> findAllByOrderByDateModificationDesc();
 }

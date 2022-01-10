@@ -20,4 +20,11 @@ public interface TagService {
     Optional<Tag> findByTag(String tag);
     List<Tag> findByEtatTrue();
     List<Tag> findByEtatFalse();
+    
+    //Par ordre croissant
+    List<Tag> findAllByOrderByTag();
+    List<Tag> findAllByOrderByDateCreation();
+    //Par ordre décroissant
+    List<Tag> findAllByOrderByTagDesc();
+    List<Tag> findAllByOrderByDateCreationDesc();
 }

@@ -23,4 +23,9 @@ public interface ModificationTypeService {
     
     List<ModificationType> findByUtilisateur(Utilisateur utilisateur);
     List<ModificationType> findByType(Type type);
+    
+    //Par ordre croissant
+    List<ModificationType> findAllByOrderByDateModification();
+    //Par ordre décroissant
+    List<ModificationType> findAllByOrderByDateModificationDesc();
 }

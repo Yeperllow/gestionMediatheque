@@ -54,4 +54,25 @@ public class TypeServiceImpl implements TypeService{
     public List<Type> findByEtatFalse() {
         return (List<Type>) typeRepository.findByEtatFalse();
     }
+    
+    @Override
+    public List<Type> findAllByOrderByType() {
+        return (List<Type>) typeRepository.findAllByOrderByType();
+    }
+
+    @Override
+    public List<Type> findAllByOrderByDateCreation() {
+        return (List<Type>) typeRepository.findAllByOrderByDateCreation();
+    }
+    
+    @Override
+    public List<Type> findAllByOrderByTypeDesc() {
+        return (List<Type>) typeRepository.findAllByOrderByTypeDesc();
+    }
+
+    @Override
+    public List<Type> findAllByOrderByDateCreationDesc() {
+        return (List<Type>) typeRepository.findAllByOrderByDateCreationDesc();
+    }
+
 }

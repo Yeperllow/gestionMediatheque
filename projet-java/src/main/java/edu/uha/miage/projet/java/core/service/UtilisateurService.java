@@ -23,4 +23,15 @@ public interface UtilisateurService {
     List<Utilisateur> findByNomAndByPrenom(String nom, String prenom);
     List<Utilisateur> findByEtatTrue();
     List<Utilisateur> findByEtatFalse();
+    
+    //Par ordre croissant
+    List<Utilisateur> findAllByOrderByLogin();
+    List<Utilisateur> findAllByOrderByNomAscPrenomAsc();
+    List<Utilisateur> findAllByOrderByDateCreation();
+    List<Utilisateur> findAllByOrderByDateModification();
+    //Par ordre décroissant
+    List<Utilisateur> findAllByOrderByLoginDesc();
+    List<Utilisateur> findAllByOrderByNomDescPrenomDesc();
+    List<Utilisateur> findAllByOrderByDateCreationDesc();
+    List<Utilisateur> findAllByOrderByDateModificationDesc();
 }

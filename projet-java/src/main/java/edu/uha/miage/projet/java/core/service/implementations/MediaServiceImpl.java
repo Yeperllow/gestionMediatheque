@@ -54,5 +54,25 @@ public class MediaServiceImpl implements MediaService {
     public List<Media> findByEtatFalse() {
         return (List<Media>) mediaRepository.findByEtatFalse();
     }
+
+    @Override
+    public List<Media> findAllByOrderByNom() {
+        return (List<Media>) mediaRepository.findAllByOrderByNom();
+    }
+
+    @Override
+    public List<Media> findAllByOrderByDateCreation() {
+        return (List<Media>) mediaRepository.findAllByOrderByDateCreation();
+    }
+
+    @Override
+    public List<Media> findAllByOrderByNomDesc() {
+        return (List<Media>) mediaRepository.findAllByOrderByNomDesc();
+    }
+
+    @Override
+    public List<Media> findAllByOrderByDateCreationDesc() {
+        return (List<Media>) mediaRepository.findAllByOrderByDateCreationDesc();
+    }
             
 }

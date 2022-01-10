@@ -52,5 +52,15 @@ public class ModificationTypeServiceImpl implements ModificationTypeService{
     public List<ModificationType> findByType(Type type) {
         return (List<ModificationType>) modificationTypeRepository.findByType(type);
     }
+
+    @Override
+    public List<ModificationType> findAllByOrderByDateModification() {
+        return (List<ModificationType>) modificationTypeRepository.findAllByOrderByDateModification();
+    }
+
+    @Override
+    public List<ModificationType> findAllByOrderByDateModificationDesc() {
+        return (List<ModificationType>) modificationTypeRepository.findAllByOrderByDateModificationDesc();
+    }
     
 }

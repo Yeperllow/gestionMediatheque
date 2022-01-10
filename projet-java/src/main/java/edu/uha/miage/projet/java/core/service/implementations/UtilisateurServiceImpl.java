@@ -70,4 +70,44 @@ public class UtilisateurServiceImpl implements UtilisateurService{
         return (List<Utilisateur>) utilisateurRepository.findByEtatFalse();
     }
     
+    @Override
+    public List<Utilisateur> findAllByOrderByLogin() {
+        return (List<Utilisateur>) utilisateurRepository.findAllByOrderByLogin();
+    }
+
+    @Override
+    public List<Utilisateur> findAllByOrderByNomAscPrenomAsc() {
+        return (List<Utilisateur>) utilisateurRepository.findAllByOrderByNomAscPrenomAsc();
+    }
+
+    @Override
+    public List<Utilisateur> findAllByOrderByDateCreation() {
+        return (List<Utilisateur>) utilisateurRepository.findAllByOrderByDateCreation();
+    }
+
+    @Override
+    public List<Utilisateur> findAllByOrderByDateModification() {
+        return (List<Utilisateur>) utilisateurRepository.findAllByOrderByDateModification();
+    }
+    
+    @Override
+    public List<Utilisateur> findAllByOrderByLoginDesc() {
+        return (List<Utilisateur>) utilisateurRepository.findAllByOrderByLoginDesc();
+    }
+
+    @Override
+    public List<Utilisateur> findAllByOrderByNomDescPrenomDesc() {
+        return (List<Utilisateur>) utilisateurRepository.findAllByOrderByNomDescPrenomDesc();
+    }
+
+    @Override
+    public List<Utilisateur> findAllByOrderByDateCreationDesc() {
+        return (List<Utilisateur>) utilisateurRepository.findAllByOrderByDateCreationDesc();
+    }
+
+    @Override
+    public List<Utilisateur> findAllByOrderByDateModificationDesc() {
+        return (List<Utilisateur>) utilisateurRepository.findAllByOrderByDateModificationDesc();
+    }
+    
 }

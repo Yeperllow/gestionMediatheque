@@ -20,4 +20,15 @@ public interface EmprunteMediaRepository extends JpaRepository<EmprunteMedia, Em
     List<EmprunteMedia> findByEtatFalse();
     List<EmprunteMedia> findByUtilisateur(Utilisateur utilisateur);
     List<EmprunteMedia> findByMedia(Media media);
+    
+    //Par ordre croissant
+    List<EmprunteMedia> findAllByOrderByDateDebut();
+    List<EmprunteMedia> findAllByOrderByDateFin();
+    List<EmprunteMedia> findAllByOrderByDateCreation();
+    List<EmprunteMedia> findAllByOrderByDateModification();
+    //Par ordre décroissant
+    List<EmprunteMedia> findAllByOrderByDateDebutDesc();
+    List<EmprunteMedia> findAllByOrderByDateFinDesc();
+    List<EmprunteMedia> findAllByOrderByDateCreationDesc();
+    List<EmprunteMedia> findAllByOrderByDateModificationDesc();
 }

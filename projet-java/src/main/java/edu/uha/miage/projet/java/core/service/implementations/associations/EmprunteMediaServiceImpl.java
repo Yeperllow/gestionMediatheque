@@ -62,5 +62,45 @@ public class EmprunteMediaServiceImpl implements EmprunteMediaService{
     public List<EmprunteMedia> findByMedia(Media media) {
         return (List<EmprunteMedia>) emprunteMediaRepository.findByMedia(media);
     }
+
+    @Override
+    public List<EmprunteMedia> findAllByOrderByDateDebut() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findAllByOrderByDateDebut();
+    }
+
+    @Override
+    public List<EmprunteMedia> findAllByOrderByDateFin() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findAllByOrderByDateFin();
+    }
+
+    @Override
+    public List<EmprunteMedia> findAllByOrderByDateCreation() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findAllByOrderByDateCreation();
+    }
+
+    @Override
+    public List<EmprunteMedia> findAllByOrderByDateModification() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findAllByOrderByDateModification();
+    }
+
+    @Override
+    public List<EmprunteMedia> findAllByOrderByDateDebutDesc() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findAllByOrderByDateDebutDesc();
+    }
+
+    @Override
+    public List<EmprunteMedia> findAllByOrderByDateFinDesc() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findAllByOrderByDateFinDesc();
+    }
+
+    @Override
+    public List<EmprunteMedia> findAllByOrderByDateCreationDesc() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findAllByOrderByDateCreationDesc();
+    }
+
+    @Override
+    public List<EmprunteMedia> findAllByOrderByDateModificationDesc() {
+        return (List<EmprunteMedia>) emprunteMediaRepository.findAllByOrderByDateModificationDesc();
+    }
     
 }

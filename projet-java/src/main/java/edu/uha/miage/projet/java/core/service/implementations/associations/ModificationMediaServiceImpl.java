@@ -52,5 +52,15 @@ public class ModificationMediaServiceImpl implements ModificationMediaService{
     public List<ModificationMedia> findByMedia(Media media) {
         return (List<ModificationMedia>) modificationMediaRepository.findByMedia(media);
     }
+
+    @Override
+    public List<ModificationMedia> findAllByOrderByDateModification() {
+        return (List<ModificationMedia>) modificationMediaRepository.findAllByOrderByDateModification();
+    }
+
+    @Override
+    public List<ModificationMedia> findAllByOrderByDateModificationDesc() {
+        return (List<ModificationMedia>) modificationMediaRepository.findAllByOrderByDateModificationDesc();
+    }
     
 }

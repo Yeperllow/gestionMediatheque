@@ -18,4 +18,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ModificationMediaRepository extends JpaRepository<ModificationMedia, ModificationMediaId>{
     List<ModificationMedia> findByUtilisateur(Utilisateur utilisateur);
     List<ModificationMedia> findByMedia(Media media);
+    
+    //Par ordre croissant
+    List<ModificationMedia> findAllByOrderByDateModification();
+    //Par ordre décroissant
+    List<ModificationMedia> findAllByOrderByDateModificationDesc();
 }

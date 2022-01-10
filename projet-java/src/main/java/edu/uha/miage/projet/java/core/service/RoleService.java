@@ -18,4 +18,13 @@ public interface RoleService {
     List<Role> findAll();
     Optional<Role> findById(int id);
     Optional<Role> findByRole(String role);
+    
+    //Par ordre croissant
+    List<Role> findAllByOrderByRole();
+    List<Role> findAllByOrderByDateCreation();
+    List<Role> findAllByOrderByDateModification();
+    //Par ordre décroissant
+    List<Role> findAllByOrderByRoleDesc();
+    List<Role> findAllByOrderByDateCreationDesc();
+    List<Role> findAllByOrderByDateModificationDesc();
 }
