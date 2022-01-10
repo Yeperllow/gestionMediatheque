@@ -37,13 +37,13 @@ public class ModificationType implements Serializable {
     private Type type;
     
     @NotNull
-    private Date date_modification;
+    private Date dateModification;
     
     public ModificationType() {
     }
     
-    public ModificationType(Date date_modification) {
-        this.date_modification = date_modification;
+    public ModificationType(Date dateModification) {
+        this.dateModification = dateModification;
     }
 
     public Utilisateur getUtilisateur() {
@@ -62,17 +62,17 @@ public class ModificationType implements Serializable {
         this.type = type;
     }
 
-    public Date getDate_modification() {
-        return date_modification;
+    public Date getDateModification() {
+        return dateModification;
     }
 
-    public void setDate_modification(Date date_modification) {
-        this.date_modification = date_modification;
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
     }
 
     @Override
     public String toString() {
-        return "ModificationType{" + "utilisateur=" + utilisateur + ", type=" + type + ", date_modification=" + date_modification + '}';
+        return "ModificationType{" + "utilisateur=" + utilisateur + ", type=" + type + ", dateModification=" + dateModification + '}';
     }
     
     

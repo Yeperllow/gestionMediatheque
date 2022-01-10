@@ -49,10 +49,10 @@ public class Media implements Serializable{
     private boolean etat;
     
     /**
-     * Le champs date_creation permet de savoir quand l'objet de type Media a été créer.
+     * Le champs dateCreation permet de savoir quand l'objet de type Media a été créer.
      */
     @NotNull
-    private Date date_creation;
+    private Date dateCreation;
     
     /**
      * Le champ createur de type Utilisateur permet de savoir qui à ajouté ce media dans la base de données.
@@ -82,12 +82,12 @@ public class Media implements Serializable{
      * Constructeur de la classe Media, permettant de créer un objet de type Media avec un nom, un etat et une date de création.
      * @param nom Nom du média
      * @param etat Etat du media : true si le média est actif, false si le média est désactivé
-     * @param date_creation Date de création de l'objet
+     * @param dateCreation Date de création de l'objet
      */
-    public Media(String nom, boolean etat, Date date_creation) {
+    public Media(String nom, boolean etat, Date dateCreation) {
         this.nom = nom;
         this.etat = etat;
-        this.date_creation = date_creation;
+        this.dateCreation = dateCreation;
     }
     
     /**
@@ -155,19 +155,19 @@ public class Media implements Serializable{
     }
 
     /**
-     * Getter du champs date_creation
+     * Getter du champs dateCreation
      * @return la date de création de l'objet de type Media
      */
-    public Date getDate_creation() {
-        return date_creation;
+    public Date getDateCreation() {
+        return dateCreation;
     }
 
     /**
-     * Setter du champs date_creation - N'est utile que pour l'aspect Serializable de la classe Media
-     * @param date_creation Une nouvelle date de création
+     * Setter du champs dateCreation - N'est utile que pour l'aspect Serializable de la classe Media
+     * @param dateCreation Une nouvelle date de création
      */
-    public void setDate_creation(Date date_creation) {
-        this.date_creation = date_creation;
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
     /**
@@ -176,7 +176,7 @@ public class Media implements Serializable{
      */
     @Override
     public String toString() {
-        return "Media{" + "id=" + id + ", nom=" + nom + ", etat=" + etat + ", date_creation=" + date_creation + '}';
+        return "Media{" + "id=" + id + ", nom=" + nom + ", etat=" + etat + ", dateCreation=" + dateCreation + '}';
     }
     
     /**

@@ -36,30 +36,30 @@ public class EmprunteMedia implements Serializable{
     private Media media;
     
     @NotNull
-    private Date date_debut;
+    private Date dateDebut;
     
     @NotNull
-    private Date date_fin;
+    private Date dateFin;
     
     @NotNull
-    private Date date_creation;
+    private Date dateCreation;
     
     @NotNull
-    private Date date_modification;
+    private Date dateModification;
     
     @NotNull
     private boolean etat;
     
     public EmprunteMedia() {
-        this.date_creation = new Date(System.currentTimeMillis());
-        this.date_modification = new Date(System.currentTimeMillis());
+        this.dateCreation = new Date(System.currentTimeMillis());
+        this.dateModification = new Date(System.currentTimeMillis());
     }
     
-    public EmprunteMedia(Date date_debut, Date date_fin) {
-        this.date_debut = date_debut;
-        this.date_fin = date_fin;
-        this.date_creation = new Date(System.currentTimeMillis());
-        this.date_modification = new Date(System.currentTimeMillis());
+    public EmprunteMedia(Date dateDebut, Date dateFin) {
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.dateCreation = new Date(System.currentTimeMillis());
+        this.dateModification = new Date(System.currentTimeMillis());
     }
 
     public Utilisateur getUtilisateur() {
@@ -78,36 +78,36 @@ public class EmprunteMedia implements Serializable{
         this.media = media;
     }
 
-    public Date getDate_debut() {
-        return date_debut;
+    public Date getDateDebut() {
+        return dateDebut;
     }
 
-    public void setDate_debut(Date date_debut) {
-        this.date_debut = date_debut;
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
     }
 
-    public Date getDate_fin() {
-        return date_fin;
+    public Date getDateFin() {
+        return dateFin;
     }
 
-    public void setDate_fin(Date date_fin) {
-        this.date_fin = date_fin;
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 
-    public Date getDate_creation() {
-        return date_creation;
+    public Date getDateCreation() {
+        return dateCreation;
     }
 
-    public void setDate_creation(Date date_creation) {
-        this.date_creation = date_creation;
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
-    public Date getDate_modification() {
-        return date_modification;
+    public Date getDateModification() {
+        return dateModification;
     }
 
-    public void setDate_modification(Date date_modification) {
-        this.date_modification = date_modification;
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
     }
 
     public boolean isEtat() {
@@ -120,7 +120,7 @@ public class EmprunteMedia implements Serializable{
 
     @Override
     public String toString() {
-        return "EmprunteMedia{" + "utilisateur=" + utilisateur + ", media=" + media + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", date_creation=" + date_creation + ", date_modification=" + date_modification + ", etat=" + etat + '}';
+        return "EmprunteMedia{" + "utilisateur=" + utilisateur + ", media=" + media + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", dateCreation=" + dateCreation + ", dateModification=" + dateModification + ", etat=" + etat + '}';
     }
     
     

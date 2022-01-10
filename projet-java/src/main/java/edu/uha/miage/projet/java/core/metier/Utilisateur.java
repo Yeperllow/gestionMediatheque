@@ -56,12 +56,12 @@ public class Utilisateur implements Serializable{
     private String prenom;
     
     /**
-     * Le champs mot_de_passe correspond au mot de passe de cet utilisateur
+     * Le champs motDePasse correspond au mot de passe de cet utilisateur
      */
     @NotNull
     @Size(min=2, max=50)
     @Pattern(regexp="^[a-zA-Z0-9]*&")
-    private String mot_de_passe;
+    private String motDePasse;
     
     /**
      * Le champs etat correspond à l'état de l'utilisateur. </br> À true, l'utilisateur est actif, et à false, l'utilisateur est désactivé/indisponible.
@@ -70,16 +70,16 @@ public class Utilisateur implements Serializable{
     private boolean etat;
     
     /**
-     * Le champs date_creation permet de savoir quand l'objet de type Media a été créer.
+     * Le champs dateCreation permet de savoir quand l'objet de type Media a été créer.
      */
     @NotNull
-    private Date date_creation;
+    private Date dateCreation;
     
     /**
-     * Le champs date_modification permet de savoir quand l'objet de type Utilisateur a été modifié pour la dernière fois
+     * Le champs dateModification permet de savoir quand l'objet de type Utilisateur a été modifié pour la dernière fois
      */
     @NotNull
-    private Date date_modification;
+    private Date dateModification;
     
     /**
      * Le champs role permet de savoir le role de l'utilisateur, par exemple : administrateur, utilisateur, ...
@@ -110,19 +110,19 @@ public class Utilisateur implements Serializable{
      * @param login un String correspondant au login/pseudo/identifiant de l'utilisateur
      * @param nom un String correspondant au nom de l'utilisateur
      * @param prenom un String correspondant au prenom de l'utilisateur
-     * @param mot_de_passe un String correspondant au mot de passe de l'utilisateur
+     * @param motDePasse un String correspondant au mot de passe de l'utilisateur
      * @param etat un boolean correspond à l'état de l'utilisateur - true pour activé, false pour désactivé
-     * @param date_creation un objet de type Date correspondant à la date de création de l'objet
-     * @param date_modification un objet de type Date correspondant à la dernière date de modification
+     * @param dateCreation un objet de type Date correspondant à la date de création de l'objet
+     * @param dateModification un objet de type Date correspondant à la dernière date de modification
      */
-    public Utilisateur(String login, String nom, String prenom, String mot_de_passe, boolean etat, Date date_creation, Date date_modification) {
+    public Utilisateur(String login, String nom, String prenom, String motDePasse, boolean etat, Date dateCreation, Date dateModification) {
         this.login = login;
         this.nom = nom;
         this.prenom = prenom;
-        this.mot_de_passe = mot_de_passe;
+        this.motDePasse = motDePasse;
         this.etat = etat;
-        this.date_creation = date_creation;
-        this.date_modification = date_modification;
+        this.dateCreation = dateCreation;
+        this.dateModification = dateModification;
     }
     
     /**
@@ -137,11 +137,11 @@ public class Utilisateur implements Serializable{
      * @param login un String correspondant au login/pseudo/identifiant de l'utilisateur
      * @param nom un String correspondant au nom de l'utilisateur
      * @param prenom un String correspondant au prenom de l'utilisateur
-     * @param mot_de_passe un String correspondant au mot de passe de l'utilisateur
+     * @param motDePasse un String correspondant au mot de passe de l'utilisateur
      * @param etat un boolean correspond à l'état de l'utilisateur - true pour activé, false pour désactivé 
      */
-    public Utilisateur(String login, String nom, String prenom, String mot_de_passe, boolean etat) {
-        this(login, nom, prenom, mot_de_passe, etat, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+    public Utilisateur(String login, String nom, String prenom, String motDePasse, boolean etat) {
+        this(login, nom, prenom, motDePasse, etat, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
     }
 
     /**
@@ -209,19 +209,19 @@ public class Utilisateur implements Serializable{
     }
 
     /**
-     * Getter du champs mot_de_passe
+     * Getter du champs motDePasse
      * @return un String correspondant au mot de passe de l'utilisateur
      */
-    public String getMot_de_passe() {
-        return mot_de_passe;
+    public String getMotDePasse() {
+        return motDePasse;
     }
     
     /**
-     * Setter du champs mot_de_passe
-     * @param mot_de_passe un String correspondant au nouveau mot de passe de l'utilisateur
+     * Setter du champs motDePasse
+     * @param motDePasse un String correspondant au nouveau mot de passe de l'utilisateur
      */
-    public void setMot_de_passe(String mot_de_passe) {
-        this.mot_de_passe = mot_de_passe;
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
     }
 
     /**
@@ -241,35 +241,35 @@ public class Utilisateur implements Serializable{
     }
 
     /**
-     * Getter du champs date_creation
+     * Getter du champs dateCreation
      * @return la date de création de l'objet de type Utilisateur
      */
-    public Date getDate_creation() {
-        return date_creation;
+    public Date getDateCreation() {
+        return dateCreation;
     }
 
     /**
-     * Setter du champs date_creation - N'est utile que pour l'aspect Serializable de la classe Utilisateur
-     * @param date_creation Une nouvelle date de création
+     * Setter du champs dateCreation - N'est utile que pour l'aspect Serializable de la classe Utilisateur
+     * @param dateCreation Une nouvelle date de création
      */
-    public void setDate_creation(Date date_creation) {
-        this.date_creation = date_creation;
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
     /**
-     * Getter du champs date_modification
+     * Getter du champs dateModification
      * @return Un objet de type Date correspondant à la date de la dernière modification de l'objet
      */
-    public Date getDate_modification() {
-        return date_modification;
+    public Date getDateModification() {
+        return dateModification;
     }
 
     /**
-     * Setter du champs date_modification
-     * @param date_modification Un objet de type Date correspondant à la date d'une nouvelle modification
+     * Setter du champs dateModification
+     * @param dateModification Un objet de type Date correspondant à la date d'une nouvelle modification
      */
-    public void setDate_modification(Date date_modification) {
-        this.date_modification = date_modification;
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
     }
 
     /**
@@ -278,7 +278,7 @@ public class Utilisateur implements Serializable{
      */
     @Override
     public String toString() {
-        return "Utilisateur{" + "id=" + id + ", login=" + login + ", nom=" + nom + ", prenom=" + prenom + ", mot_de_passe=" + mot_de_passe + ", etat=" + etat + ", date_creation=" + date_creation + ", date_modification=" + date_modification + '}';
+        return "Utilisateur{" + "id=" + id + ", login=" + login + ", nom=" + nom + ", prenom=" + prenom + ", motDePasse=" + motDePasse + ", etat=" + etat + ", dateCreation=" + dateCreation + ", dateModification=" + dateModification + '}';
     }
     
     

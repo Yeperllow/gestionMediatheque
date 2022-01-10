@@ -36,13 +36,13 @@ public class ModificationMedia implements Serializable{
     private Media media;
     
     @NotNull
-    private Date date_modification;
+    private Date dateModification;
     
     public ModificationMedia() {
     }
     
     public ModificationMedia(Date date_modification) {
-        this.date_modification = date_modification;
+        this.dateModification = date_modification;
     }
 
     public Utilisateur getUtilisateur() {
@@ -61,17 +61,17 @@ public class ModificationMedia implements Serializable{
         this.media = media;
     }
 
-    public Date getDate_modification() {
-        return date_modification;
+    public Date getDateModification() {
+        return dateModification;
     }
 
-    public void setDate_modification(Date date_modification) {
-        this.date_modification = date_modification;
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
     }
 
     @Override
     public String toString() {
-        return "ModificationMedia{" + "utilisateur=" + utilisateur + ", media=" + media + ", date_modification=" + date_modification + '}';
+        return "ModificationMedia{" + "utilisateur=" + utilisateur + ", media=" + media + ", dateModification=" + dateModification + '}';
     }
     
     

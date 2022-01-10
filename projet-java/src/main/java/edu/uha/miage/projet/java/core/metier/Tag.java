@@ -41,10 +41,10 @@ public class Tag {
     private boolean etat;
     
     /**
-     * Le champs date_creation correspond à la date de création de l'objet
+     * Le champs dateCreation correspond à la date de création de l'objet
      */
     @NotNull
-    private Date date_creation;
+    private Date dateCreation;
     
     /**
      * Le champs listMedia correspond à la liste des objets de type Media qui sont concernés par ce tag
@@ -56,12 +56,12 @@ public class Tag {
      * Constructeur de la classe Tag
      * @param tag un String correspondant au nom du tag
      * @param etat un boolean correspondant à l'état du tag (true pour actif, false pour désactivé)
-     * @param date_creation Un objet de type Date correspondant à la date de création de l'objet
+     * @param dateCreation Un objet de type Date correspondant à la date de création de l'objet
      */
-    public Tag(String tag, boolean etat, Date date_creation) {
+    public Tag(String tag, boolean etat, Date dateCreation) {
         this.tag = tag;
         this.etat = true;
-        this.date_creation = date_creation;
+        this.dateCreation = dateCreation;
     }
     
     /**
@@ -129,19 +129,19 @@ public class Tag {
     }
 
     /**
-     * Getter du champs date_creation
+     * Getter du champs dateCreation
      * @return la date de création de l'objet
      */
-    public Date getDate_creation() {
-        return date_creation;
+    public Date getDateCreation() {
+        return dateCreation;
     }
 
     /**
-     * Setter du champs date_creation - N'est utile uniquement pour la serialization
-     * @param date_creation Un objet de type Date correspondant à la date de création de l'objet
+     * Setter du champs dateCreation - N'est utile uniquement pour la serialization
+     * @param dateCreation Un objet de type Date correspondant à la date de création de l'objet
      */
-    public void setDate_creation(Date date_creation) {
-        this.date_creation = date_creation;
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
     /**
@@ -150,7 +150,7 @@ public class Tag {
      */
     @Override
     public String toString() {
-        return "Tag{" + "id=" + id + ", tag=" + tag + ", etat=" + etat + ", date_creation=" + date_creation + '}';
+        return "Tag{" + "id=" + id + ", tag=" + tag + ", etat=" + etat + ", dateCreation=" + dateCreation + '}';
     }
     
     

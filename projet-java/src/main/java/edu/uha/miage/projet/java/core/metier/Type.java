@@ -46,10 +46,10 @@ public class Type implements Serializable{
     private boolean etat;
     
     /**
-     * Le champs date_creation correspond à la date de création de l'objet
+     * Le champs dateCreation correspond à la date de création de l'objet
      */
     @NotNull
-    private Date date_creation;
+    private Date dateCreation;
     
     /**
      * Le champ createur de type Utilisateur permet de savoir qui à ajouté ce type dans la base de données.
@@ -67,12 +67,12 @@ public class Type implements Serializable{
      * Constructeur de la classe Type
      * @param type un String correspondant au nom du type
      * @param etat l'état du type - true pour actif, false pour désactivé
-     * @param date_creation Un objet de type Date correspondant à la date de création de l'objet
+     * @param dateCreation Un objet de type Date correspondant à la date de création de l'objet
      */
-    public Type(String type, boolean etat, Date date_creation) {
+    public Type(String type, boolean etat, Date dateCreation) {
         this.type = type;
         this.etat = etat;
-        this.date_creation = date_creation;
+        this.dateCreation = dateCreation;
     }
     
     /**
@@ -140,19 +140,19 @@ public class Type implements Serializable{
     }
 
     /**
-     * Getter du champs date_creation
+     * Getter du champs dateCreation
      * @return la date de création de l'objet de type Type
      */
-    public Date getDate_creation() {
-        return date_creation;
+    public Date getDateCreation() {
+        return dateCreation;
     }
 
     /**
-     * Setter du champs date_creation - N'est utile que pour l'aspect Serializable de la classe Type
-     * @param date_creation Une nouvelle date de création
+     * Setter du champs dateCreation - N'est utile que pour l'aspect Serializable de la classe Type
+     * @param dateCreation Une nouvelle date de création
      */
-    public void setDate_creation(Date date_creation) {
-        this.date_creation = date_creation;
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
     /**
@@ -161,7 +161,7 @@ public class Type implements Serializable{
      */
     @Override
     public String toString() {
-        return "Type{" + "id=" + id + ", type=" + type + ", etat=" + etat + ", date_creation=" + date_creation + '}';
+        return "Type{" + "id=" + id + ", type=" + type + ", etat=" + etat + ", dateCreation=" + dateCreation + '}';
     }
 
     /**

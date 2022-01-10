@@ -33,27 +33,27 @@ public class Role implements Serializable{
     private String role;
     
     /**
-     * le champs date_creation correspond à la date de création de cet objet
+     * le champs dateCreation correspond à la date de création de cet objet
      */
     @NotNull
-    private Date date_creation;
+    private Date dateCreation;
     
     /**
-     * Le champs date_modification correspond à la dernière date de modification de cet objet de type Role
+     * Le champs dateModification correspond à la dernière date de modification de cet objet de type Role
      */
     @NotNull
-    private Date date_modification;
+    private Date dateModification;
     
     /**
      * Constructeur de la classe Role
      * @param role le nom du role, de type String
-     * @param date_creation la date de création de l'objet
-     * @param date_modification la date de modification de l'objet (est égale à la date de création au départ)
+     * @param dateCreation la date de création de l'objet
+     * @param dateModification la date de modification de l'objet (est égale à la date de création au départ)
      */
-    public Role(String role, Date date_creation, Date date_modification) {
+    public Role(String role, Date dateCreation, Date dateModification) {
         this.role = role;
-        this.date_creation = date_creation;
-        this.date_modification = date_modification;
+        this.dateCreation = dateCreation;
+        this.dateModification = dateModification;
     }
     
     /**
@@ -104,35 +104,35 @@ public class Role implements Serializable{
     }
 
     /**
-     * Getter du champs date_creation
+     * Getter du champs dateCreation
      * @return la date de création de l'objet
      */
-    public Date getDate_creation() {
-        return date_creation;
+    public Date getDateCreation() {
+        return dateCreation;
     }
 
     /**
-     * Setter du champs date_creation - N'est utile uniquement pour la serialization
-     * @param date_creation Un objet de type Date correspondant à la date de création de l'objet
+     * Setter du champs dateCreation - N'est utile uniquement pour la serialization
+     * @param dateCreation Un objet de type Date correspondant à la date de création de l'objet
      */
-    public void setDate_creation(Date date_creation) {
-        this.date_creation = date_creation;
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
     /**
-     * Getter du champs date_modification
+     * Getter du champs dateModification
      * @return Un objet de type Date correspondant à la date de la dernière modification de l'objet
      */
-    public Date getDate_modification() {
-        return date_modification;
+    public Date getDateModification() {
+        return dateModification;
     }
 
     /**
-     * Setter du champs date_modification
-     * @param date_modification Un objet de type Date correspondant à la date d'une nouvelle modification
+     * Setter du champs dateModification
+     * @param dateModification Un objet de type Date correspondant à la date d'une nouvelle modification
      */
-    public void setDate_modification(Date date_modification) {
-        this.date_modification = date_modification;
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
     }
 
     /**
@@ -141,7 +141,7 @@ public class Role implements Serializable{
      */
     @Override
     public String toString() {
-        return "Role{" + "id=" + id + ", role=" + role + ", date_creation=" + date_creation + ", date_modification=" + date_modification + '}';
+        return "Role{" + "id=" + id + ", role=" + role + ", dateCreation=" + dateCreation + ", dateModification=" + dateModification + '}';
     }
     
     
