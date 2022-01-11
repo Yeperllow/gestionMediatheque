@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- *
+ * Interface EmprunteMediaService permettant d'implémenter un service qui donne l'accès aux données de la table "EMPRUNTE_MEDIA"
  * @author quentin
  */
 public interface EmprunteMediaService {

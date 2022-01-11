@@ -10,7 +10,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Interface TagRepository permettant d'ajouter des requêtes pour la table "TAG"
  * @author quentin
  */
 public interface TagRepository extends JpaRepository<Tag, Integer>{

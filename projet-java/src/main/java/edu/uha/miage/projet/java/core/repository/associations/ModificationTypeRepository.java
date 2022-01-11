@@ -12,7 +12,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Interface ModificationTypeRepository permettant d'ajouter des requêtes pour la table "MODIFIE_TYPE"
  * @author quentin
  */
 public interface ModificationTypeRepository extends JpaRepository<ModificationType, ModificationTypeId>{

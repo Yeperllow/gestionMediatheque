@@ -12,7 +12,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Interface EmprunteMediaRepository permettant d'ajouter des requêtes pour la table "EMPRUNTE_MEDIA"
  * @author quentin
  */
 public interface EmprunteMediaRepository extends JpaRepository<EmprunteMedia, EmprunteMediaId>{

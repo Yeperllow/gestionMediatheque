@@ -10,7 +10,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Interface RoleRepository permettant d'ajouter des requêtes pour la table "ROLE"
  * @author quentin
  */
 public interface RoleRepository extends JpaRepository<Role, Integer>{

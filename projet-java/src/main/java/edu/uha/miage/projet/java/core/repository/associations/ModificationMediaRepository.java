@@ -12,7 +12,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Interface ModificationMediaRepository permettant d'ajouter des requêtes pour la table "MODIFIE_MEDIA"
  * @author quentin
  */
 public interface ModificationMediaRepository extends JpaRepository<ModificationMedia, ModificationMediaId>{

@@ -10,7 +10,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Interface TypeRepository permettant d'ajouter des requêtes pour la table "TYPE"
  * @author quentin
  */
 public interface TypeRepository extends JpaRepository<Type, Integer>{

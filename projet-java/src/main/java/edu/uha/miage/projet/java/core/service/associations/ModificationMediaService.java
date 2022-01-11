@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- *
+ * Interface ModificationMediaService permettant d'implémenter un service qui donne l'accès aux données de la table "MODIFIE_MEDIA"
  * @author quentin
  */
 public interface ModificationMediaService {

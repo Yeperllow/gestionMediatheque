@@ -7,34 +7,66 @@ package edu.uha.miage.projet.java.core.metier.associations;
 import java.io.Serializable;
 
 /**
- *
+ * La classe EmprunteMediaId permet de créer un objet qui contient les deux clés primaires de la table "EMPRUNTE_MEDIA"
  * @author quentin
  */
 public class EmprunteMediaId implements Serializable {
+    
+    /**
+     * Correspond à l'id de l'objet utilisateur associé à cet emprunt
+     */
     private int utilisateur;
+    
+    /**
+     * Correspond à l'id de l'objet media associé à cet emprunt
+     */
     private int media;
 
+    /**
+     * Getter de la variable utilisateur
+     * @return l'id correspondant à l'objet utilisateur associé
+     */
     public int getUtilisateur() {
         return utilisateur;
     }
 
+    /**
+     * Setter de la variable utilisateur
+     * @param utilisateur le nouveau id correspondant à l'objet utilisateur associé
+     */
     public void setUtilisateur(int utilisateur) {
         this.utilisateur = utilisateur;
     }
 
+    /**
+     * Getter de la variable media
+     * @return l'id correspondant à l'objet média associé
+     */
     public int getMedia() {
         return media;
     }
 
+    /**
+     * Setter de la variable media
+     * @param media le nouveau id correspondant à l'objet média associé
+     */
     public void setMedia(int media) {
         this.media = media;
     }
 
+    /**
+     * Méthode toString de la classe EmprunteMediaId
+     * @return 
+     */
     @Override
     public String toString() {
         return "EmprunteMediaId{" + "utilisateur=" + utilisateur + ", media=" + media + '}';
     }
 
+    /**
+     * Méthode hashCode de la classe EmprunteMediaId
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -43,6 +75,11 @@ public class EmprunteMediaId implements Serializable {
         return hash;
     }
 
+    /**
+     * Méthode equals de la classe EmprunteMediaId
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

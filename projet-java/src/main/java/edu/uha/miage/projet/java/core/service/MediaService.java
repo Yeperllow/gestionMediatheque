@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- *
+ * Interface MediaService permettant d'implémenter un service qui donne l'accès aux données de la table "MEDIA"
  * @author quentin
  */
 public interface MediaService {

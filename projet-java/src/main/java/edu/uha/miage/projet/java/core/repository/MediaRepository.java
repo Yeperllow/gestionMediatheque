@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Interface MediaRepository permettant d'ajouter des requêtes pour la table "MEDIA"
  * @author quentin
  */
 public interface MediaRepository extends JpaRepository<Media, Integer>{

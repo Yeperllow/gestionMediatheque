@@ -12,7 +12,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Interface DecritMediaRepository permettant d'ajouter des requêtes pour la table "DECRIT_MEDIA"
  * @author quentin
  */
 public interface DecritMediaRepository extends JpaRepository<DecritMedia, DecritMediaId>{

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- *
+ * Interface UtilisateurService permettant d'implémenter un service qui donne l'accès aux données de la table "UTILISATEUR"
  * @author quentin
  */
 public interface UtilisateurService {

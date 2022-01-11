@@ -10,7 +10,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Interface UtilisateurRepository permettant d'ajouter des requêtes pour la table "UTILISATEUR"
  * @author quentin
  */
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer>{
