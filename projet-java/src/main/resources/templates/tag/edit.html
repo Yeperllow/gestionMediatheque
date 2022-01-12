@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head th:include="fragments/common :: [//head]" />
+    <body  class="fixed-nav sticky-footer" id="page-top">    
+        <div th:replace="fragments/common :: [//sidebar]" />
+
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#"> <div layout:fragment="title-1"></div></a>
+                    </li>
+                    <li class="breadcrumb-item active"><div layout:fragment="title-2"></li>
+                </ol>
+                <div class="box_general padding_bottom">
+                    <div class="header_box version_2">
+                        <h2><i class="fa fa-file"></i>Ajouter un tag</h2>
+                    </div>
+                    <form action="" method="post" id="">
+                        
+                        <div class="body">
+                            
+                            <div class="alert alert-success">
+                                
+                            </div>
+                            
+
+                            
+                            <div class="alert alert-danger">
+                                
+                            </div>
+                            
+
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" required class="form-control" name="tag" placeholder="Nom du tag">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" required class="form-control" name="etat" placeholder="Etat">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-primary btn-round">Ajouter un tag</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div th:include="fragments/common :: [//footer]" />
+    </body>
+</html>

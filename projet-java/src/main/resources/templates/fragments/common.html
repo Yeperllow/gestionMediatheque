@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Ansonika">
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+
+        <link href="/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/theme/bootstrap/css/datatables.css" rel="stylesheet">
+        <link href="/theme/bootstrap/css/custom.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <!-- Navigation-->
+        <div th:fragment="sidebar">
+            <div th:replace="fragments/sidebar"/>
+        </div>
+        <!-- /Navigation-->
+
+
+        <div th:fragment="content" class="content-wrapper">
+            <div class="container-fluid">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#"> <div layout:fragment="title-1"></div></a>
+                    </li>
+                    <li class="breadcrumb-item active"><div layout:fragment="title-2"></li>
+                </ol>
+                <div layout:fragment="content-2"></div>
+            </div>
+        </div>
+        @include('back.layouts.footer')
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Souhaitez vous vous déconnecter ?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Mettez fin à votre session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                        <a class="btn btn-primary" href="">Se deconnecter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <script src="/js/jquery/jquery-3.2.1.min.js"></script>
+            <script src="/js/files/bootstrap.bundle.min.js"></script>
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        </footer>
+
+
+    </body>
+</html>
