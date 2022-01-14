@@ -10,11 +10,13 @@ import edu.uha.miage.projet.java.core.service.TagService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Implémentation de l'interface TagService </br> Utiliser cette classe pour accéder aux données de la table "TAG"
  * @author quentin
  */
+@Service
 public class TagServiceImpl implements TagService{
 
     /**
@@ -67,8 +69,8 @@ public class TagServiceImpl implements TagService{
      * @return un objet de type tag dont le nom de tag correspond à celui indiqué, null sinon
      */
     @Override
-    public Optional<Tag> findByTag(String tag) {
-        return tagRepository.findByTag(tag);
+    public Optional<Tag> findByNom(String tag) {
+        return tagRepository.findByNom(tag);
     }
 
     /**
@@ -94,8 +96,8 @@ public class TagServiceImpl implements TagService{
      * @return Une List contenant tous les tags rangés par tag dans l'ordre croissant
      */
     @Override
-    public List<Tag> findAllByOrderByTag() {
-        return (List<Tag>) tagRepository.findAllByOrderByTag();
+    public List<Tag> findAllByOrderByNom() {
+        return (List<Tag>) tagRepository.findAllByOrderByNom();
     }
 
     /**
@@ -112,8 +114,8 @@ public class TagServiceImpl implements TagService{
      * @return Une List contenant tous les tags rangés par tag dans l'ordre décroissant
      */
     @Override
-    public List<Tag> findAllByOrderByTagDesc() {
-        return (List<Tag>) tagRepository.findAllByOrderByTagDesc();
+    public List<Tag> findAllByOrderByNomDesc() {
+        return (List<Tag>) tagRepository.findAllByOrderByNomDesc();
     }
 
     /**
@@ -131,8 +133,8 @@ public class TagServiceImpl implements TagService{
      * @return Une List contenant tous les tags dont le tag contient le String donné en paramètre
      */
     @Override
-    public List<Tag> findByTagContaining(String str) {
-        return (List<Tag>) tagRepository.findByTagContaining(str);
+    public List<Tag> findByNomContaining(String str) {
+        return (List<Tag>) tagRepository.findByNomContaining(str);
     }
     
 }

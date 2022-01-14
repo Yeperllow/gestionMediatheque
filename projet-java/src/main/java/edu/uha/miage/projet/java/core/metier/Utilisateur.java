@@ -38,29 +38,29 @@ public class Utilisateur implements Serializable{
      * Le champs login correspond au login/pseudo/identifiant de l'utilisateur
      */
     @NotNull
-    @Size(min=2, max=25)
+    @Size(min=2, max=25, message="Le login doit contenir entre 2 et 25 caractères")
     private String login;
     
     /**
      * Le champs nom correspond au nom de l'utilisateur
      */
     @NotNull
-    @Size(min=2, max=50)
+    @Size(min=2, max=50, message="Le nom doit contenir entre 2 et 50 caractères")
     private String nom;
     
     /**
      * le champs prenom correspond au prenom de l'utilisateur
      */
     @NotNull
-    @Size(min=2, max=50)
+    @Size(min=2, max=50, message="Le prénom doit contenir entre 2 et 50 caractères")
     private String prenom;
     
     /**
      * Le champs motDePasse correspond au mot de passe de cet utilisateur
      */
     @NotNull
-    @Size(min=2, max=50)
-    @Pattern(regexp="^[a-zA-Z0-9]*&")
+    @Size(min=2, max=50, message="Le mot de passe doit contenir entre 2 et 50 caractères")
+    //@Pattern(regexp="^[a-zA-Z0-9]*&", message="Le mot de passe doit être composé au moins d'une majuscule et une minuscule et un chiffre")
     private String motDePasse;
     
     /**

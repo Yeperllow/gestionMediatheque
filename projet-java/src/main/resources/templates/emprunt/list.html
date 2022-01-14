@@ -11,14 +11,7 @@
                     <div class="card-header">
                         <i class="fa fa-table"></i> Liste des emprunts</div>
                     <div class="card-body">
-                        <div class="alert alert-success">
-
-                        </div>
-
-
-                        <div class="alert alert-danger">
-
-                        </div>
+                        
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
@@ -32,13 +25,13 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                    <tr th:each="emprunt : ${emprunts}">
+                                        <td th:text="${emprunt.utilisateur.login}"></td>
+                                        <td th:text="${emprunt.media.nom}"></td>
+                                        <td th:text="${emprunt.dateDebut}"></td>
+                                        <td th:text="${emprunt.dateFin}"></td>
                                         <td>
-                                            <a href="" class="btn btn-primary"></a>
-                                            <a href="" class="btn btn-danger"></a>
+                                           <a th:href="@{'/emprunt/delete?utilisateur=' + ${emprunt.utilisateur.id} + '&media=' +${emprunt.media.id}}" class="btn btn-danger">Supprimer</a>
                                         </td>
 
 

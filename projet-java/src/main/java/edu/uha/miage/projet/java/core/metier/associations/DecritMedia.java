@@ -45,6 +45,7 @@ public class DecritMedia {
      */
     private boolean etat;
     
+    
     /**
      * Constructeur de la classe DecritMedia, permet de créer un objet de la table "DECRIT_MEDIA" avec un état précis donné en paramètre
      * @param etat 
@@ -59,5 +60,37 @@ public class DecritMedia {
     public DecritMedia() {
         this(true);
     }
+
+    public Tag getTag() {
+        return tag;
+    }
+
+    public Media getMedia() {
+        return media;
+    }
+
+    public boolean isEtat() {
+        return etat;
+    }
+
+    public void setTag(Tag tag) {
+        this.tag = tag;
+    }
+
+    public void setMedia(Media media) {
+        this.media = media;
+    }
+
+    public void setEtat(boolean etat) {
+        this.etat = etat;
+    }
+
+    @Override
+    public String toString() {
+        return "DecritMedia{" + "tag=" + tag + ", media=" + media + ", etat=" + etat + '}';
+    }
+    
+    
+    
     
 }

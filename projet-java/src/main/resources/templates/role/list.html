@@ -9,7 +9,7 @@
                 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-table"></i> Liste des tags</div>
+                        <i class="fa fa-table"></i> Liste des rôles</div>
                     <div class="card-body">
                         <div th:if="${success}" class="alert alert-success" th:text="message">
 
@@ -24,20 +24,20 @@
                                 <thead>
                                     <tr>
                                         <th>Nom</th>
-                                        <th>Etat</th>
                                         <th>Date de création</th>
+                                        <th>Date de modification</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    <tr th:each="tag : ${tags}">
-                                        <td th:text="${tag.nom}"></td>
-                                        <td th:text="${tag.etat}"></td>
-                                        <td th:text="${tag.dateCreation}"></td>
+                                    <tr th:each="role : ${roles}">
+                                        <td th:text="${role.nom}"></td>
+                                        <td th:text="${role.dateCreation}"></td>
+                                        <td th:text="${role.dateModification}"></td>
                                         <td>
-                                            <a th:href="@{/tag/edit(id=${tag.id})}" class="btn btn-primary">Modifier</a>
-                                            <a th:href="@{'/tag/delete/' + ${tag.id}}" class="btn btn-danger">Supprimer</a>
+                                            <a th:href="@{/role/edit(id=${role.id})}" class="btn btn-primary">Modifier</a>
+                                            <a th:href="@{'/role/delete/' + ${role.id}}" class="btn btn-danger">Supprimer</a>
                                         </td>
 
 

@@ -11,19 +11,13 @@
                     <div class="card-header">
                         <i class="fa fa-table"></i> Liste des médias</div>
                     <div class="card-body">
-                        <div class="alert alert-success">
-
-                        </div>
-
-
-                        <div class="alert alert-danger">
-
-                        </div>
+                       
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>Nom</th>
+                                        <th>Tags</th>
                                         <th>Etat</th>
                                         <th>Date de création</th>
                                         <th>Actions</th>
@@ -31,13 +25,17 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                    <tr th:each="media : ${medias}">
+                                        <td th:text="${media.nom}"></td>
                                         <td>
-                                            <a href="" class="btn btn-primary"></a>
-                                            <a href="" class="btn btn-danger"></a>
+                                            <span th:each="tag : ${media.listTag}" th:text="${tag.tag.nom}" class="badge badge-info"></span>
+                                        </td>
+                                        <td th:text="${media.etat}"></td>
+                                        <td th:text="${media.dateCreation}"></td>
+                                        <td>
+                                            <a th:href="@{/media/tag/edit(id=${media.id})}" class="btn btn-info">Ajouter un tag à un média</a>
+                                            <a th:href="@{/media/edit(id=${media.id})}" class="btn btn-primary">Modifier</a>
+                                            <a th:href="@{'/media/delete/' + ${media.id}}" class="btn btn-danger">Supprimer</a>
                                         </td>
 
 

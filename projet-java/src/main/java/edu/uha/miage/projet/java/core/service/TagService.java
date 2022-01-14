@@ -17,16 +17,16 @@ public interface TagService {
     void delete(int id);
     List<Tag> findAll();
     Optional<Tag> findById(int id);
-    Optional<Tag> findByTag(String tag);
+    Optional<Tag> findByNom(String nom);
     List<Tag> findByEtatTrue();
     List<Tag> findByEtatFalse();
     
     //Par ordre croissant
-    List<Tag> findAllByOrderByTag();
+    List<Tag> findAllByOrderByNom();
     List<Tag> findAllByOrderByDateCreation();
     //Par ordre décroissant
-    List<Tag> findAllByOrderByTagDesc();
+    List<Tag> findAllByOrderByNomDesc();
     List<Tag> findAllByOrderByDateCreationDesc();
     
-    List<Tag> findByTagContaining(String str);
+    List<Tag> findByNomContaining(String str);
 }

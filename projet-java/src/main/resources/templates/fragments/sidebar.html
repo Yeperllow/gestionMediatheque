@@ -1,120 +1,130 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <a class="navbar-brand" href="{{ URL::to('/') }}"><img src="{{ asset('front/img/logo_doc.png') }}" data-retina="true" alt="" width="163" height="36"></a>
+    <a class="navbar-brand" href=""></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link {{ (Request::segment(1) == 'dashboard' ? 'active' : '') }}" href="{{ URL::to('/dashboard') }}">
-              <ion-icon name="clipboard-outline"></ion-icon>
-            <span class="nav-link-text">Tableau de bord</span>
-          </a>
-        </li>
-        
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="">
+                    <ion-icon name="clipboard-outline"></ion-icon>
+                    <span class="nav-link-text">Tableau de bord</span>
+                </a>
+            </li>
 
 
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-          <a class="nav-link nav-link-collapse collapsed {{ (Request::segment(1) == 'rdv' ? 'active' : '') }}" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
-              <ion-icon name="calendar-outline"></ion-icon>
-            <span class="nav-link-text">Gestion des tag</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseProfile">
-            <li>
-              <a href="{{ URL::to('/rdv/prochains') }}">Ajout d'un tag</a>
-            </li>
-			      <li>
-              <a href="{{URL::to('/rdv/passes')}}">Liste des tags</a>
-            </li>
-          </ul>
-        </li>
-        
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-          <a class="nav-link nav-link-collapse collapsed {{ (Request::segment(1) == 'rdv' ? 'active' : '') }}" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
-              <ion-icon name="calendar-outline"></ion-icon>
-            <span class="nav-link-text">Gestion des tag</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseProfile">
-            <li>
-              <a href="{{ URL::to('/rdv/prochains') }}">Ajout d'un tag</a>
-            </li>
-			      <li>
-              <a href="{{URL::to('/rdv/passes')}}">Liste des tags</a>
-            </li>
-          </ul>
-        </li>
-        
-        
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-          <a class="nav-link nav-link-collapse collapsed {{ (Request::segment(1) == 'rdv' ? 'active' : '') }}" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
-              <ion-icon name="calendar-outline"></ion-icon>
-            <span class="nav-link-text">Gestion des médias</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseProfile">
-            <li>
-              <a href="{{ URL::to('/rdv/prochains') }}">Ajout d'un média</a>
-            </li>
-			      <li>
-              <a href="{{URL::to('/rdv/passes')}}">Liste des médias</a>
-            </li>
-          </ul>
-        </li>
-        
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-          <a class="nav-link nav-link-collapse collapsed {{ (Request::segment(1) == 'rdv' ? 'active' : '') }}" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
-              <ion-icon name="calendar-outline"></ion-icon>
-            <span class="nav-link-text">Gestion des tag</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseProfile">
-            <li>
-              <a href="{{ URL::to('/rdv/prochains') }}">Ajout des types</a>
-            </li>
-			      <li>
-              <a href="{{URL::to('/rdv/passes')}}">Liste des types</a>
-            </li>
-          </ul>
-        </li>
-        
-        
-        
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-          <a class="nav-link nav-link-collapse collapsed {{ (Request::segment(1) == 'rdv' ? 'active' : '') }}" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
-              <ion-icon name="calendar-outline"></ion-icon>
-            <span class="nav-link-text">Gestion des employés</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseProfile">
-            <li>
-              <a href="{{ URL::to('/rdv/prochains') }}">Ajout des employés</a>
-            </li>
-			      <li>
-              <a href="{{URL::to('/rdv/passes')}}">Liste des employés</a>
-            </li>
-          </ul>
-        </li>
 
-       
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+                <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/tag')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseTag" data-parent="#exampleAccordion">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                    <span class="nav-link-text">Gestion des tag</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseTag">
+                    <li>
+                        <a th:href="@{/tag/create}">Edition d'un tag</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/tag}">Liste des tags</a>
+                    </li>
+                </ul>
+            </li>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
-            <a class="nav-link {{ (Request::segment(1) == 'parametre' ? 'active' : '') }}" href="{{ URL::to('/parametre') }}">
-                <ion-icon name="settings-outline"></ion-icon>
-              <span class="nav-link-text">Paramètres du compte</span>
-            </a>
-          </li>
 
-      </ul>
-      <ul class="navbar-nav sidenav-toggler">
-        <li class="nav-item">
-          <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-          </a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link"   data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Deconnexion</a>
-        </li>
-      </ul>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
+                <a th:href="@{/emprunt}" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/emprunt')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" href="{{ URL::to('/proche') }}">
+                    <ion-icon name="bookmarks-outline"></ion-icon>
+                    <span class="nav-link-text">Liste des emprunts</span>
+                </a>
+            </li>
+
+           
+
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+                <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/media')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseMedia" data-parent="#exampleAccordion">
+                    <ion-icon name="folder-outline"></ion-icon>
+                    <span class="nav-link-text">Gestion des médias</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseMedia">
+                    <li>
+                        <a th:href="@{/media/create}">Ajout d'un média</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/media}">Liste des médias</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+                <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/type')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseeType" data-parent="#exampleAccordion">
+                    <ion-icon name="keypad-outline"></ion-icon>
+                    <span class="nav-link-text">Gestion des types</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseeType">
+                    <li>
+                        <a th:href="@{/type/create}">Ajout des types</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/type}">Liste des types</a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+                <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/employe')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseEmploye" data-parent="#exampleAccordion">
+                    <ion-icon name="people-outline"></ion-icon>
+                    <span class="nav-link-text">Gestion des employés</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseEmploye">
+                    <li>
+                        <a th:href="@{/employe/create}">Ajout des employés</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/employe}">Liste des employés</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+                <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/role')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseRole" data-parent="#exampleAccordion">
+                    <ion-icon name="document-outline"></ion-icon>
+                    <span class="nav-link-text">Gestion des rôles</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseRole">
+                    <li>
+                        <a th:href="@{/role/create}">Edition d'un rôle</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/role}">Liste des rôles</a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
+                <a class="nav-link {{ (Request::segment(1) == 'parametre' ? 'active' : '') }}" href="{{ URL::to('/parametre') }}">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    <span class="nav-link-text">Paramètres du compte</span>
+                </a>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link"   data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>Deconnexion</a>
+            </li>
+        </ul>
     </div>
-  </nav>
+</nav>

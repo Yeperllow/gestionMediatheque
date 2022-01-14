@@ -9,33 +9,33 @@
                 
                 <div class="box_general padding_bottom">
                     <div class="header_box version_2">
-                        <h2><i class="fa fa-file"></i>Edition d'un type</h2>
+                        <h2><i class="fa fa-file"></i>Editer un rôle</h2>
                     </div>
-                    <form th:object="${type}" action="" method="post" id="">
-                        
+                    <form th:object="${role}" method="post" role="form">
+
                         <div class="body">
-                            
-                          
+
+                            <div th:if="${success}" class="alert alert-success" th:text="message">
+
+                            </div>
+
+
+                            <div th:if="${fail}" class="alert alert-danger" th:text="message">
+
+                            </div>
+
+
 
                             <div class="row clearfix">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="tag">Type</label>
+                                        <label for="tag">Rôle</label>
                                         <input type="text" class="form-control" th:field="*{nom}" id="tag">
                                         <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" />
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="etat">Etat</label>
-                                        <select class="form-control" th:field="*{etat}" id="etat">
-                                            <option th:value="true">Valide</option>
-                                            <option th:value="false">Invalide</option>
-                                        </select>
-                                        <span th:if="${#fields.hasErrors('etat')}" th:errors="*{etat}" />
-                                    </div>
-                                </div>
+                              
 
 
                                 <div class="col-sm-12">

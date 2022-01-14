@@ -39,7 +39,7 @@ public class Media implements Serializable{
      * Le champs nom correspond au nom du media.
      */
     @NotNull
-    @Size(min=2, max=255)
+    @Size(min=2, max=255, message="Le nom doit contenir entre 2 et 50 caractères")
     private String nom;
     
     /**
@@ -59,6 +59,13 @@ public class Media implements Serializable{
      */
     @ManyToOne
     private Utilisateur createur;
+    
+    
+    /**
+     * Le champ type permet de savoir le type de ce media dans la base de données.
+     */
+    @ManyToOne
+    private Type type;
     
     /**
      * Cette liste permet de savoir quand des modifications sur ce media ont été effectuées, ainsi que l'utilisateur qui en est responsable.
@@ -129,6 +136,7 @@ public class Media implements Serializable{
     public String getNom() {
         return nom;
     }
+    
 
     /**
      * Setter du champs nom
@@ -219,6 +227,16 @@ public class Media implements Serializable{
         return empruntsDuMedia;
     }
 
+    public List<DecritMedia> getListTag() {
+        return listTag;
+    }
+
+    public void setListTag(List<DecritMedia> listTag) {
+        this.listTag = listTag;
+    }
+    
+    
+
     /**
      * Setter du champ empruntsDuMedia
      * @param empruntsDuMedia une liste de type List<EmprunteMedia>
@@ -226,6 +244,16 @@ public class Media implements Serializable{
     public void setEmpruntsDuMedia(List<EmprunteMedia> empruntsDuMedia) {
         this.empruntsDuMedia = empruntsDuMedia;
     }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+    
+    
     
     
     

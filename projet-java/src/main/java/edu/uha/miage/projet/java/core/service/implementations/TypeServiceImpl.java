@@ -10,11 +10,13 @@ import edu.uha.miage.projet.java.core.service.TypeService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Implémentation de l'interface TypeService </br> Utiliser cette classe pour accéder aux données de la table "TYPE"
  * @author quentin
  */
+@Service
 public class TypeServiceImpl implements TypeService{
 
     /**
@@ -67,8 +69,8 @@ public class TypeServiceImpl implements TypeService{
      * @return Un objet de type Type dont le nom de type correspond à celui indiqué, null sinon
      */
     @Override
-    public Optional<Type> findByType(String type) {
-        return typeRepository.findByType(type);
+    public Optional<Type> findByNom(String type) {
+        return typeRepository.findByNom(type);
     }
 
     /**
@@ -94,8 +96,8 @@ public class TypeServiceImpl implements TypeService{
      * @return Une List contenant tous les types rangés par type dans l'ordre croissant
      */
     @Override
-    public List<Type> findAllByOrderByType() {
-        return (List<Type>) typeRepository.findAllByOrderByType();
+    public List<Type> findAllByOrderByNom() {
+        return (List<Type>) typeRepository.findAllByOrderByNom();
     }
 
     /**
@@ -112,8 +114,8 @@ public class TypeServiceImpl implements TypeService{
      * @return Une List contenant tous les types rangés par type dans l'ordre décroissant
      */
     @Override
-    public List<Type> findAllByOrderByTypeDesc() {
-        return (List<Type>) typeRepository.findAllByOrderByTypeDesc();
+    public List<Type> findAllByOrderByNomDesc() {
+        return (List<Type>) typeRepository.findAllByOrderByNomDesc();
     }
 
     /**
@@ -131,8 +133,8 @@ public class TypeServiceImpl implements TypeService{
      * @return Une List contenant tous les types dont le type contient le String donné en paramètre
      */
     @Override
-    public List<Type> findByTypeContaining(String str) {
-        return (List<Type>) typeRepository.findByTypeContaining(str);
+    public List<Type> findByNomContaining(String str) {
+        return (List<Type>) typeRepository.findByNomContaining(str);
     }
 
 }

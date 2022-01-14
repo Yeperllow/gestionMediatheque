@@ -1,16 +1,99 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
+    <head th:include="fragments/common :: [//head]" />
+    <body  class="fixed-nav sticky-footer" id="page-top">    
+        <div th:replace="fragments/common :: [//sidebar]" />
+
+        <div class="content-wrapper">
+            <div class="container-fluid">
+              
+                <div class="box_general padding_bottom">
+                    <div class="header_box version_2">
+                        <h2><i class="fa fa-file"></i>Editer un employé</h2>
+                    </div>
+                    <form th:object="${utilisateur}" method="post" role="form">
+
+                        <div class="body">
+
+                            <div th:if="${success}" class="alert alert-success" th:text="message">
+
+                            </div>
+
+
+                            <div th:if="${fail}" class="alert alert-danger" th:text="message">
+
+                            </div>
+
+
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="nom">Nom</label>
+                                        <input type="text" class="form-control" th:field="*{nom}" id="nom">
+                                        <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" />
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="prenom">Prenom</label>
+                                        <input type="text" class="form-control" th:field="*{prenom}" id="prenom">
+                                        <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}" />
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="tag">Login</label>
+                                        <input type="text" class="form-control" th:field="*{login}" id="tag">
+                                        <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" />
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="tag">Mot de passe</label>
+                                        <input type="text" class="form-control" th:field="*{motDePasse}" id="tag">
+                                        <span th:if="${#fields.hasErrors('motDePasse')}" th:errors="*{motDePasse}" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="etat">Etat</label>
+                                        <select class="form-control" th:field="*{etat}" id="etat">
+                                            <option th:value="true">Valide</option>
+                                            <option th:value="false">Invalide</option>
+                                        </select>
+                                        <span th:if="${#fields.hasErrors('etat')}" th:errors="*{etat}" />
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="role">Rôle</label>
+                                        <select class="form-control" th:field="*{role}" id="role">
+                                           
+                                            <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.nom}"></option>
+                                        </select>
+                                        <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}" />
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-primary btn-round">Valider</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div th:include="fragments/common :: [//footer]" />
     </body>
 </html>

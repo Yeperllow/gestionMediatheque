@@ -30,7 +30,7 @@ public class Role implements Serializable{
      * Le champs role correspond au nom du role
      */
     @NotNull
-    private String role;
+    private String nom;
     
     /**
      * le champs dateCreation correspond à la date de création de cet objet
@@ -51,7 +51,7 @@ public class Role implements Serializable{
      * @param dateModification la date de modification de l'objet (est égale à la date de création au départ)
      */
     public Role(String role, Date dateCreation, Date dateModification) {
-        this.role = role;
+        this.nom = nom;
         this.dateCreation = dateCreation;
         this.dateModification = dateModification;
     }
@@ -91,16 +91,16 @@ public class Role implements Serializable{
      * Getter du champs role
      * @return un String correspondant au nom du role
      */
-    public String getRole() {
-        return role;
+    public String getNom() {
+        return nom;
     }
 
     /**
      * Setter du champs role
      * @param role un nom de role, de type String
      */
-    public void setRole(String role) {
-        this.role = role;
+    public void setNom(String role) {
+        this.nom = role;
     }
 
     /**
@@ -141,7 +141,7 @@ public class Role implements Serializable{
      */
     @Override
     public String toString() {
-        return "Role{" + "id=" + id + ", role=" + role + ", dateCreation=" + dateCreation + ", dateModification=" + dateModification + '}';
+        return "Role{" + "id=" + id + ", nom=" + nom + ", dateCreation=" + dateCreation + ", dateModification=" + dateModification + '}';
     }
     
     

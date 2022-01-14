@@ -14,16 +14,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author quentin
  */
 public interface TagRepository extends JpaRepository<Tag, Integer>{
-    Optional<Tag> findByTag(String tag);
+    Optional<Tag> findByNom(String tag);
     List<Tag> findByEtatTrue();
     List<Tag> findByEtatFalse();
     
     //Par ordre croissant
-    List<Tag> findAllByOrderByTag();
+    List<Tag> findAllByOrderByNom();
     List<Tag> findAllByOrderByDateCreation();
     //Par ordre décroissant
-    List<Tag> findAllByOrderByTagDesc();
+    List<Tag> findAllByOrderByNomDesc();
     List<Tag> findAllByOrderByDateCreationDesc();
     
-    List<Tag> findByTagContaining(String str);
+    List<Tag> findByNomContaining(String str);
 }

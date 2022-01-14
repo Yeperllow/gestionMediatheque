@@ -52,7 +52,7 @@ public class EmprunteMedia implements Serializable{
     /**
      * Le champs dateFin correspond à la date de fin de l'emprunt du média concerné
      */
-    @NotNull
+    @NotNull(message="Veuillez entrer une date de fin")
     private Date dateFin;
     
     /**

@@ -5,6 +5,7 @@
 package edu.uha.miage.projet.java.core.metier;
 
 import edu.uha.miage.projet.java.core.metier.associations.DecritMedia;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.validation.constraints.NotNull;
  * @author quentin
  */
 @Entity
-public class Tag {
+public class Tag implements Serializable {
     
     /**
      * Le champs Id correspond à l'id de l'objet dans la base de données. Cet id est incrémenté automatiquement.
@@ -32,7 +33,7 @@ public class Tag {
      * Le champs tag correspond au nom du tag
      */
     @NotNull
-    private String tag;
+    private String nom;
     
     /**
      * Le champs etat correspond à l'état du tag. </br> À true, le tag est actif, et à false, le tag est désactivé/indisponible.
@@ -58,8 +59,8 @@ public class Tag {
      * @param etat un boolean correspondant à l'état du tag (true pour actif, false pour désactivé)
      * @param dateCreation Un objet de type Date correspondant à la date de création de l'objet
      */
-    public Tag(String tag, boolean etat, Date dateCreation) {
-        this.tag = tag;
+    public Tag(String nom, boolean etat, Date dateCreation) {
+        this.nom = nom;
         this.etat = true;
         this.dateCreation = dateCreation;
     }
@@ -100,16 +101,16 @@ public class Tag {
      * Getter du champs tag
      * @return un String correspondant au nom du tag
      */
-    public String getTag() {
-        return tag;
+    public String getNom() {
+        return nom;
     }
 
     /**
      * Setter du champs tag
      * @param tag un String correspondant au nouveau nom du tag
      */
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     /**
@@ -150,7 +151,7 @@ public class Tag {
      */
     @Override
     public String toString() {
-        return "Tag{" + "id=" + id + ", tag=" + tag + ", etat=" + etat + ", dateCreation=" + dateCreation + '}';
+        return "Tag{" + "id=" + id + ", nom=" + nom + ", etat=" + etat + ", dateCreation=" + dateCreation + '}';
     }
     
     

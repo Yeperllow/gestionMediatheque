@@ -11,12 +11,12 @@
                     <div class="card-header">
                         <i class="fa fa-table"></i> Liste des employés</div>
                     <div class="card-body">
-                        <div class="alert alert-success">
+                        <div th:if="${success}" class="alert alert-success">
 
                         </div>
 
 
-                        <div class="alert alert-danger">
+                        <div th:if="${fail}" class="alert alert-danger">
 
                         </div>
                         <div class="table-responsive">
@@ -28,20 +28,24 @@
                                         <th>Prénom</th>
                                         <th>Date de création</th>
                                         <th>Date de modification</th>
+                                        <th>Etat</th>
+                                        <th>Rôle</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                    <tr th:each="employe : ${employes}">
+                                        <td th:text="${employe.login}"></td>
+                                        <td th:text="${employe.nom}"></td>
+                                        <td th:text="${employe.prenom}"></td>
+                                        <td th:text="${employe.dateCreation}"></td>
+                                        <td th:text="${employe.dateModification}"></td>
+                                        <td th:text="${employe.etat}"></td>
+                                        <td th:text="${employe.role.nom}"></td>
                                         <td>
-                                            <a href="" class="btn btn-primary"></a>
-                                            <a href="" class="btn btn-danger"></a>
+                                            <a th:href="@{/employe/edit(id=${employe.id})}" class="btn btn-primary">Modifier</a>
+                                            <a th:href="@{'/employe/delete/' + ${employe.id}}" class="btn btn-danger">Supprimer</a>
                                         </td>
 
 

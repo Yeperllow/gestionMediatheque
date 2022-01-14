@@ -10,11 +10,13 @@ import edu.uha.miage.projet.java.core.service.UtilisateurService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Implémentation de l'interface UtilisaateurService </br> Utiliser cette classe pour accéder aux données de la table "UTILISATEUR"
  * @author quentin
  */
+@Service
 public class UtilisateurServiceImpl implements UtilisateurService{
 
     /**

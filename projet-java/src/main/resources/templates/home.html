@@ -2,60 +2,42 @@
 <html>
     <head th:include="fragments/common :: [//head]" />
     <body  class="fixed-nav sticky-footer" id="page-top">    
-        <div th:replace="fragments/common :: [//sidebar]" />
+        <div th:replace="fragments/common :: [//topbar]" />
 
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="margin-left: 0px">
             <div class="container-fluid">
-                
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-table"></i> Liste des emprunts</div>
-                    <div class="card-body">
-                        <div class="alert alert-success">
+                <ol class="breadcrumb">
 
+                    <li class="breadcrumb-item active"><div layout:fragment="title-2">Liste des médias</li>
+                </ol>
+                <div class="box_general padding_bottom">
+
+
+
+                    <div class="row clearfix">
+                        <div class="col-sm-3" th:each="media : ${medias}">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${media.nom}"></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted" th:text="${media.type.nom}"></h6>
+                                    <p class="card-text">
+                                        <span th:each="tag : ${media.listTag}" th:text="${tag.tag.nom}" class="badge badge-info"></span>
+                                    </p>
+                                    
+                                    <span th:if="${media.etat}" class="card-link badge badge-success">Disponible</span>
+                                    <span th:unless="${media.etat}" class="card-link badge badge-danger">Indisponible</span>
+                                    
+                                    
+                                    <a th:href="@{'/emprunt/create?id='+ ${media.id}}" class="card-link">Effectuer un emprunt</a>
+                                </div>
+                            </div>
                         </div>
 
-
-                        <div class="alert alert-danger">
-
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Utilisateur</th>
-                                        <th>Média</th>
-                                        <th>Date de début</th>
-                                        <th>Date de fin</th>
-                                        <th>Date de modification</th>
-                                        <th>Etat</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href="" class="btn btn-primary"></a>
-                                            <a href="" class="btn btn-danger"></a>
-                                        </td>
-
-
-
-                                    </tr>
-
-
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
-        <div th:include="fragments/common :: [//footer]" />
+
+
     </body>
 </html>

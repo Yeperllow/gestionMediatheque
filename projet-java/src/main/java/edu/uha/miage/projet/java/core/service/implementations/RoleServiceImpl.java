@@ -10,11 +10,13 @@ import edu.uha.miage.projet.java.core.service.RoleService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Implémentation de l'interface RoleService </br> Utiliser cette classe pour accéder aux données de la table "ROLE"
  * @author quentin
  */
+@Service
 public class RoleServiceImpl implements RoleService{
 
     /**
@@ -68,8 +70,8 @@ public class RoleServiceImpl implements RoleService{
      * @return un objet de type Role si le nom du role correspond à celui indiqué, null sinon
      */
     @Override
-    public Optional<Role> findByRole(String role) {
-        return roleRepository.findByRole(role);
+    public Optional<Role> findByNom(String role) {
+        return roleRepository.findByNom(role);
     }
 
     /**
@@ -77,8 +79,8 @@ public class RoleServiceImpl implements RoleService{
      * @return Une List contenant tous les roles, rangé par role dans l'ordre croissant
      */
     @Override
-    public List<Role> findAllByOrderByRole() {
-        return (List<Role>) roleRepository.findAllByOrderByRole();
+    public List<Role> findAllByOrderByNom() {
+        return (List<Role>) roleRepository.findAllByOrderByNom();
     }
 
     /**
@@ -104,8 +106,8 @@ public class RoleServiceImpl implements RoleService{
      * @return Une List contenant tous les roles, rangé par role dans l'ordre décroissant
      */
     @Override
-    public List<Role> findAllByOrderByRoleDesc() {
-        return (List<Role>) roleRepository.findAllByOrderByRoleDesc();
+    public List<Role> findAllByOrderByNomDesc() {
+        return (List<Role>) roleRepository.findAllByOrderByNomDesc();
     }
 
     /**

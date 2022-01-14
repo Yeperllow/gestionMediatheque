@@ -6,36 +6,41 @@
 
         <div class="content-wrapper">
             <div class="container-fluid">
-                
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#"> <div layout:fragment="title-1"></div></a>
+                    </li>
+                    <li class="breadcrumb-item active"><div layout:fragment="title-2"></li>
+                </ol>
                 <div class="box_general padding_bottom">
                     <div class="header_box version_2">
-                        <h2><i class="fa fa-file"></i>Edition d'un type</h2>
+                        <h2><i class="fa fa-file"></i>Ajouter des tags à un medias</h2>
                     </div>
-                    <form th:object="${type}" action="" method="post" id="">
-                        
-                        <div class="body">
-                            
-                          
+                    <form th:action="@{''}" th:object="${decritMediaModel}" method="post" role="form">
 
+                        <div class="body">
+                             <input hidden type="text" th:value="${id_media}" th:field="*{id_media}">
                             <div class="row clearfix">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="tag">Type</label>
-                                        <input type="text" class="form-control" th:field="*{nom}" id="tag">
-                                        <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" />
+                                        <label for="nom">Nom</label>
+                                        <input disabled="" type="text" class="form-control" th:value="${media.nom}" id="nom">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="etat">Etat</label>
-                                        <select class="form-control" th:field="*{etat}" id="etat">
-                                            <option th:value="true">Valide</option>
-                                            <option th:value="false">Invalide</option>
+                                        <label for="id_tag">Tag</label>
+                                        <select class="form-control" th:field="*{id_tag}" id="id_tag">
+
+                                            <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="${tag.nom}"></option>
                                         </select>
-                                        <span th:if="${#fields.hasErrors('etat')}" th:errors="*{etat}" />
+                                        <span th:if="${#fields.hasErrors('id_tag')}" th:errors="*{id_tag}" />
                                     </div>
                                 </div>
+                                
+                                
+                               
 
 
                                 <div class="col-sm-12">

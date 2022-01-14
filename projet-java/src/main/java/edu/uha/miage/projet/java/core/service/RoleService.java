@@ -17,14 +17,14 @@ public interface RoleService {
     void delete(int id);
     List<Role> findAll();
     Optional<Role> findById(int id);
-    Optional<Role> findByRole(String role);
+    Optional<Role> findByNom(String role);
     
     //Par ordre croissant
-    List<Role> findAllByOrderByRole();
+    List<Role> findAllByOrderByNom();
     List<Role> findAllByOrderByDateCreation();
     List<Role> findAllByOrderByDateModification();
     //Par ordre décroissant
-    List<Role> findAllByOrderByRoleDesc();
+    List<Role> findAllByOrderByNomDesc();
     List<Role> findAllByOrderByDateCreationDesc();
     List<Role> findAllByOrderByDateModificationDesc();
 }

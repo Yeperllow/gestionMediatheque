@@ -21,6 +21,10 @@
         <div th:fragment="sidebar">
             <div th:replace="fragments/sidebar"/>
         </div>
+            
+        <div th:fragment="topbar">
+            <div th:replace="fragments/menu"/>
+        </div>
         <!-- /Navigation-->
 
 
@@ -35,7 +39,7 @@
                 <div layout:fragment="content-2"></div>
             </div>
         </div>
-        @include('back.layouts.footer')
+        
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fa fa-angle-up"></i>
         </a>

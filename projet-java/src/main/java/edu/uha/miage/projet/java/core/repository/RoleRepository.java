@@ -14,14 +14,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author quentin
  */
 public interface RoleRepository extends JpaRepository<Role, Integer>{
-    Optional<Role> findByRole(String role);
+    Optional<Role> findByNom(String role);
     
     //Par ordre croissant
-    List<Role> findAllByOrderByRole();
+    List<Role> findAllByOrderByNom();
     List<Role> findAllByOrderByDateCreation();
     List<Role> findAllByOrderByDateModification();
     //Par ordre décroissant
-    List<Role> findAllByOrderByRoleDesc();
+    List<Role> findAllByOrderByNomDesc();
     List<Role> findAllByOrderByDateCreationDesc();
     List<Role> findAllByOrderByDateModificationDesc();
 }

@@ -35,9 +35,9 @@ public class Type implements Serializable{
     /**
      * Le champ type correspond au nom du type
      */
-    @Size(min=2, max=50)
+    @Size(min=2, max=50, message="Le type doit contenir entre 2 et 50 caractères")
     @NotNull
-    private String type;
+    private String nom;
     
     /**
      * Le champs etat correspond à l'état du type. </br> À true, le type est actif, et à false, le type est désactivé/indisponible.
@@ -70,7 +70,7 @@ public class Type implements Serializable{
      * @param dateCreation Un objet de type Date correspondant à la date de création de l'objet
      */
     public Type(String type, boolean etat, Date dateCreation) {
-        this.type = type;
+        this.nom = type;
         this.etat = etat;
         this.dateCreation = dateCreation;
     }
@@ -111,16 +111,16 @@ public class Type implements Serializable{
      * Getter du champs type
      * @return un String correspondant au nom du type
      */
-    public String getType() {
-        return type;
+    public String getNom() {
+        return nom;
     }
 
     /**
      * Setter du champs type
      * @param type Un String correspondant au nouveau nom du type
      */
-    public void setType(String type) {
-        this.type = type;
+    public void setNom(String type) {
+        this.nom = type;
     }
 
     /**
@@ -161,7 +161,7 @@ public class Type implements Serializable{
      */
     @Override
     public String toString() {
-        return "Type{" + "id=" + id + ", type=" + type + ", etat=" + etat + ", dateCreation=" + dateCreation + '}';
+        return "Type{" + "id=" + id + ", nom=" + nom + ", etat=" + etat + ", dateCreation=" + dateCreation + '}';
     }
 
     /**

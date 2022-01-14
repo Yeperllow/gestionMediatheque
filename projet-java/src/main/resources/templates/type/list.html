@@ -11,12 +11,12 @@
                     <div class="card-header">
                         <i class="fa fa-table"></i> Liste des types</div>
                     <div class="card-body">
-                        <div class="alert alert-success">
+                        <div th:if="${success}" th:text="${message}" class="alert alert-success">
 
                         </div>
 
 
-                        <div class="alert alert-danger">
+                        <div th:if="${fail}" th:text="${message}" class="alert alert-danger">
 
                         </div>
                         <div class="table-responsive">
@@ -31,13 +31,13 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                    <tr th:each="type : ${types}">
+                                        <td th:text="${type.nom}"></td>
+                                        <td th:text="${type.etat}"></td>
+                                        <td th:text="${type.dateCreation}"></td>
                                         <td>
-                                            <a href="" class="btn btn-primary"></a>
-                                            <a href="" class="btn btn-danger"></a>
+                                            <a th:href="@{/type/edit(id=${type.id})}" class="btn btn-primary">Modifier</a>
+                                            <a th:href="@{'/type/delete/' + ${type.id}}" class="btn btn-danger">Supprimer</a>
                                         </td>
 
 
