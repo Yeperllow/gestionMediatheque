@@ -7,6 +7,7 @@ package edu.uha.miage.projet.java.core.models;
 
 import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.service.UtilisateurService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 
 /**
@@ -15,7 +16,7 @@ import org.springframework.validation.BindingResult;
  */
 public class UtilisateurModel {
 
-    public static boolean tryToSave(UtilisateurService utilisateurService, Utilisateur utilisateur, BindingResult br) {
+    public static boolean tryToSave(UtilisateurService utilisateurService, BCryptPasswordEncoder bCryptPasswordEncoder,Utilisateur utilisateur, BindingResult br) {
         try {
             if (utilisateurService.findAll().size() != 0) {
                 if (utilisateurService.findByLogin(utilisateur.getLogin()).get() != null) {
@@ -23,7 +24,7 @@ public class UtilisateurModel {
                     return false;
                 }
             }
-
+            utilisateur.setMotDePasse(bCryptPasswordEncoder.encode(utilisateur.getMotDePasse()));
             utilisateurService.save(utilisateur);
             return true;
         } catch (Exception ex) {

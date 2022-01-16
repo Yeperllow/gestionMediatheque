@@ -5,8 +5,8 @@
  */
 package edu.uha.miage.projet.java.web.controller;
 
-
 import edu.uha.miage.projet.java.core.metier.Tag;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.models.TagModel;
 import edu.uha.miage.projet.java.core.service.TagService;
 import java.sql.SQLException;
@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,7 +30,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 /**
  *
  * @author kangacedricmarshallfry
@@ -39,27 +40,28 @@ public class TagController {
 
     @Autowired
     TagService tagService;
-   
+
     @Autowired
     MessageSource messageSource;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String findAll(Model model, /* #### V3.0 #### */HttpSession session) {
+    public String findAll(Model model, /* #### V3.0 #### */ HttpSession session) {
 
-       
         model.addAttribute("tags", tagService.findAll());
         model.addAttribute("success", false);
         model.addAttribute("fail", false);
         model.addAttribute("message", false);
+        Utilisateur user = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("role", user.getRole().getNom());
 
         return "tag/list";
     }
 
     @GetMapping("/create")
-    public String create(Model model,  /* #### V3.0 #### */HttpSession session,  /* #### V3.0 #### */HttpServletRequest request) {
+    public String create(Model model, /* #### V3.0 #### */ HttpSession session, /* #### V3.0 #### */ HttpServletRequest request) {
         Tag tag = new Tag();
         model.addAttribute("tag", tag);
-               
+
         return "tag/edit";
     }
 
@@ -71,16 +73,16 @@ public class TagController {
             return "tag/edit";
         }
         if (!TagModel.tryToSave(tagService, tag, br)) {
-          return "tag/edit";
+            return "tag/edit";
         }
-        
+
         //tagService.save(tag);
         return "redirect:/tag";
     }
 
     @GetMapping("/edit")
     public String edit(@RequestParam(name = "id") int id, Model model) {
-        
+
         model.addAttribute("tag", tagService.findById(id).get());
         return "tag/edit";
     }
@@ -93,7 +95,7 @@ public class TagController {
 
         if (!TagModel.tryToSave(tagService, tag, br)) {
             return "tag/edit";
-         }
+        }
 
         tagService.save(tag);
         return "redirect:/tag";
@@ -108,9 +110,9 @@ public class TagController {
 
     @ExceptionHandler({SQLException.class, DataAccessException.class, DataIntegrityViolationException.class})
     public String databaseError(Exception exception, Model model) {
-        
+
         model.addAttribute("exception", exception);
-        
+
         return "databaseerror";
     }
 

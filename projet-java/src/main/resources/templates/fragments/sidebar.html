@@ -14,8 +14,8 @@
 
 
 
-
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+            
+            <li th:if="${role == 'ADMIN'}" class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                 <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/tag')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseTag" data-parent="#exampleAccordion">
                     <ion-icon name="bookmark-outline"></ion-icon>
                     <span class="nav-link-text">Gestion des tag</span>
@@ -73,7 +73,7 @@
 
 
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+            <li th:if="${role == 'USER'}" class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                 <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/employe')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseEmploye" data-parent="#exampleAccordion">
                     <ion-icon name="people-outline"></ion-icon>
                     <span class="nav-link-text">Gestion des employés</span>
@@ -122,7 +122,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link"   data-toggle="modal" data-target="#exampleModal">
+                <a th:href="@{'/logout'}" class="nav-link">
                     <i class="fa fa-fw fa-sign-out"></i>Deconnexion</a>
             </li>
         </ul>

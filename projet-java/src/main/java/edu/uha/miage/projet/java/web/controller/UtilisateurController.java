@@ -15,8 +15,10 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,6 +43,12 @@ public class UtilisateurController {
    
     @Autowired
     MessageSource messageSource;
+    
+    
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+    
+    
 
     @GetMapping("/employe")
     public String findAll(Model model, /* #### V3.0 #### */HttpSession session) {
@@ -65,7 +73,7 @@ public class UtilisateurController {
         if (br.hasErrors()) {
             return "employe/edit";
         }
-        if (!UtilisateurModel.tryToSave(utilisateurService, utilisateur, br)) {
+        if (!UtilisateurModel.tryToSave(utilisateurService, bCryptPasswordEncoder,utilisateur, br)) {
           return "employe/edit";
         }
         

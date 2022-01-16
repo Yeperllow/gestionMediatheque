@@ -59,7 +59,7 @@ public class Utilisateur implements Serializable{
      * Le champs motDePasse correspond au mot de passe de cet utilisateur
      */
     @NotNull
-    @Size(min=2, max=50, message="Le mot de passe doit contenir entre 2 et 50 caractères")
+    @Size(min=2, max=100, message="Le mot de passe doit contenir entre 2 et 50 caractères")
     //@Pattern(regexp="^[a-zA-Z0-9]*&", message="Le mot de passe doit être composé au moins d'une majuscule et une minuscule et un chiffre")
     private String motDePasse;
     

@@ -5,6 +5,7 @@
  */
 package edu.uha.miage.projet.java.web.controller;
 
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.metier.associations.EmprunteMedia;
 import edu.uha.miage.projet.java.core.metier.associations.EmprunteMediaId;
 import edu.uha.miage.projet.java.core.models.EmprunteMediaModel;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -59,7 +62,10 @@ public class EmprunteMediaController {
         EmprunteMedia emprunteMedia = new EmprunteMedia();
         emprunteMedia.setMedia(mediaService.findById(id_media).get());
         emprunteMedia.setDateDebut(new Date(System.currentTimeMillis()));
-        emprunteMedia.setUtilisateur(utilisateurService.findByLogin("bob").get());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+        Utilisateur utilisateur = utilisateurService.findByLogin(user.getUsername()).get();
+        emprunteMedia.setUtilisateur(utilisateur);
         
         model.addAttribute("emprunteMedia", emprunteMedia);
                
