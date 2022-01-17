@@ -21,9 +21,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-@Order(2)
+@Order(1)
 @Component
-public class DemoUtilisateur implements CommandLineRunner {
+public class DemoRole implements CommandLineRunner {
     //private static final Logger LOGGER = LoggerFactory.getLogger(DemoCategories.class);
 
     @Autowired
@@ -40,7 +40,7 @@ public class DemoUtilisateur implements CommandLineRunner {
     @Transactional
     public void run(String... arg0) throws Exception {
         
-        /*
+        
         Role role1 = new Role();
         role1.setNom("USER");
         Optional<Role> role1Tmp = roleService.findByNom("USER");
@@ -57,24 +57,17 @@ public class DemoUtilisateur implements CommandLineRunner {
         if(!role2Tmp.isPresent())
         {
             roleService.save(role2);
-        }*/
+        }
         
 
+        /*
         Utilisateur user1 = new Utilisateur();
         user1.setLogin("bob2");
         user1.setNom("FFFF");
         user1.setPrenom("MMMM");
         user1.setMotDePasse(bCryptPasswordEncoder.encode("aaaaaa"));
-        
-        Optional<Role> role1Tmp = roleService.findByNom("USER");
-        if(!role1Tmp.isPresent())
-        {
-            roleService.save(role1Tmp.get());
-        }
-        
-        user1.setRole(role1Tmp.get());
-        Optional<Utilisateur> user1Tmp = utilisateurService.findByLogin("bob2");
-        if(!user1Tmp.isPresent())
+        user1.setRole(role1);
+        if(utilisateurService.findByLogin("bob2").get() == null)
         {
             utilisateurService.save(user1);
         }
@@ -86,19 +79,13 @@ public class DemoUtilisateur implements CommandLineRunner {
         user2.setNom("III");
         user2.setPrenom("OOO");
         user2.setMotDePasse(bCryptPasswordEncoder.encode("aaaaaa"));
-        
-        Optional<Role> role2Tmp = roleService.findByNom("ADMIN");
-        if(!role2Tmp.isPresent())
+        user2.setRole(role2);
+        if(utilisateurService.findByLogin("bob3").get() == null)
         {
-            roleService.save(role2Tmp.get());
-        }
-        
-        user2.setRole(role2Tmp.get());
-        Optional<Utilisateur> user2Tmp = utilisateurService.findByLogin("bob3");
-        if(!user2Tmp.isPresent())
-        {
+            
             utilisateurService.save(user2);
         }
+*/
         
     }
 
