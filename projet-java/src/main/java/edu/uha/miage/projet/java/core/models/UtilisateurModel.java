@@ -7,6 +7,7 @@ package edu.uha.miage.projet.java.core.models;
 
 import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.service.UtilisateurService;
+import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 
@@ -16,10 +17,10 @@ import org.springframework.validation.BindingResult;
  */
 public class UtilisateurModel {
 
-    public static boolean tryToSave(UtilisateurService utilisateurService, BCryptPasswordEncoder bCryptPasswordEncoder,Utilisateur utilisateur, BindingResult br) {
+    public static boolean tryToSave(UtilisateurService utilisateurService, BCryptPasswordEncoder bCryptPasswordEncoder, Utilisateur utilisateur, BindingResult br) {
         try {
             if (utilisateurService.findAll().size() != 0) {
-                if (utilisateurService.findByLogin(utilisateur.getLogin()).get() != null) {
+                if (utilisateurService.findByLogin(utilisateur.getLogin()).isPresent()) {
                     br.rejectValue("login", "alreadythere", "Login déjà existant");
                     return false;
                 }
@@ -35,9 +36,17 @@ public class UtilisateurModel {
 
     }
 
-    public static boolean tryToUpdate(UtilisateurService utilisateurService, Utilisateur utilisateur, BindingResult br) {
+    public static boolean tryToUpdate(UtilisateurService utilisateurService, BCryptPasswordEncoder bCryptPasswordEncoder,Utilisateur utilisateur, BindingResult br) {
         try {
-
+            Optional<Utilisateur> user = utilisateurService.findByLogin(utilisateur.getLogin());
+            if (user.isPresent() && user.get().getId() != utilisateur.getId()){
+                System.out.println(user);
+                System.out.println(utilisateur);
+                br.rejectValue("login", "alreadythere", "Login déjà existant");
+                return false;
+            }
+            utilisateur.setMotDePasse(bCryptPasswordEncoder.encode(utilisateur.getMotDePasse()));
+            utilisateurService.save(utilisateur);
             utilisateurService.save(utilisateur);
             return true;
         } catch (Exception ex) {

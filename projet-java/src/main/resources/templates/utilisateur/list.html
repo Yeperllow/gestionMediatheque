@@ -9,7 +9,10 @@
                 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-table"></i> Liste des employés</div>
+                        <i class="fa fa-table"></i> 
+                        <span th:if="${ role == 'EMPLOYE' }" th:text="'Liste des employés'" />
+                        <span th:if="${ role == 'CLIENT' }" th:text="'Liste des clients'" />
+                    </div>
                     <div class="card-body">
                         <div th:if="${success}" class="alert alert-success">
 
@@ -35,17 +38,21 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr th:each="employe : ${employes}">
-                                        <td th:text="${employe.login}"></td>
-                                        <td th:text="${employe.nom}"></td>
-                                        <td th:text="${employe.prenom}"></td>
-                                        <td th:text="${employe.dateCreation}"></td>
-                                        <td th:text="${employe.dateModification}"></td>
-                                        <td th:text="${employe.etat}"></td>
-                                        <td th:text="${employe.role.nom}"></td>
-                                        <td>
-                                            <a th:href="@{/employe/edit(id=${employe.id})}" class="btn btn-primary">Modifier</a>
-                                            <a th:href="@{'/employe/delete/' + ${employe.id}}" class="btn btn-danger">Supprimer</a>
+                                    <tr th:each="utilisateur : ${utilisateurs}" th:if="${utilisateur.role.nom == role}">
+                                        <td th:text="${utilisateur.login}"></td>
+                                        <td th:text="${utilisateur.nom}"></td>
+                                        <td th:text="${utilisateur.prenom}"></td>
+                                        <td th:text="${utilisateur.dateCreation}"></td>
+                                        <td th:text="${utilisateur.dateModification}"></td>
+                                        <td th:text="${utilisateur.etat}"></td>
+                                        <td th:text="${utilisateur.role.nom}"></td>
+                                        <td th:if="${#strings.startsWith(#httpServletRequest.requestURI, '/employe')}">
+                                            <a th:href="@{/employe/edit(id=${utilisateur.id})}" class="btn btn-primary">Modifier</a>
+                                            <a th:href="@{'/employe/delete/' + ${utilisateur.id}}" class="btn btn-danger">Supprimer</a>
+                                        </td>
+                                        <td th:if="${#strings.startsWith(#httpServletRequest.requestURI, '/client')}">
+                                            <a th:href="@{/client/edit(id=${utilisateur.id})}" class="btn btn-primary">Modifier</a>
+                                            <a th:href="@{'/client/delete/' + ${utilisateur.id}}" class="btn btn-danger">Supprimer</a>
                                         </td>
 
 

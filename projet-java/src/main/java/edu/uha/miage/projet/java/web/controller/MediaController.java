@@ -10,6 +10,7 @@ import edu.uha.miage.projet.java.core.models.MediaModel;
 import edu.uha.miage.projet.java.core.metier.Tag;
 import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.metier.associations.DecritMedia;
+import edu.uha.miage.projet.java.core.metier.associations.ModificationMedia;
 import edu.uha.miage.projet.java.core.models.DecritMediaModel;
 import edu.uha.miage.projet.java.core.models.RoleModel;
 import edu.uha.miage.projet.java.core.models.TagModel;
@@ -19,11 +20,15 @@ import edu.uha.miage.projet.java.core.service.TagService;
 import edu.uha.miage.projet.java.core.service.TypeService;
 import edu.uha.miage.projet.java.core.service.UtilisateurService;
 import edu.uha.miage.projet.java.core.service.associations.DecritMediaService;
+import edu.uha.miage.projet.java.core.service.associations.ModificationMediaService;
+import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -53,6 +58,15 @@ public class MediaController {
      
     @Autowired
     DecritMediaService decritMediaService;
+    
+    
+    @Autowired
+    UtilisateurService utilisateurService;
+    
+    
+   
+    @Autowired
+    ModificationMediaService modificationMediaService;
     
     @Autowired
     RoleService roleService;
@@ -121,7 +135,14 @@ public class MediaController {
             return "media/edit";
          }
 
-        mediaService.save(media);
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utilisateur utilisateur = utilisateurService.findByLogin(user.getUsername()).get();
+        
+        ModificationMedia modificationMedia = new ModificationMedia();
+        modificationMedia.setMedia(media);
+        modificationMedia.setUtilisateur(utilisateur);
+        modificationMedia.setDateModification(new Date(System.currentTimeMillis()));
+        modificationMediaService.save(modificationMedia);
         return "redirect:/media";
     }
     
@@ -158,5 +179,20 @@ public class MediaController {
         mediaService.delete(id);
         return "redirect:/media";
     }
-
+    
+    
+    @GetMapping("/recherche")
+    public String rechercher(Model model) {
+        
+        model.addAttribute("media", new Media());
+        return "media/recherche";
+    }
+    
+    
+    @PostMapping("/recherche")
+    public String rechercherResult(Model model, Media media) {
+        
+        model.addAttribute("medias", mediaService.findByNomContaining(media.getNom()));
+        return "media/list";
+    }
 }

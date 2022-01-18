@@ -42,8 +42,8 @@ public class DemoRole implements CommandLineRunner {
         
         
         Role role1 = new Role();
-        role1.setNom("USER");
-        Optional<Role> role1Tmp = roleService.findByNom("USER");
+        role1.setNom("ADMIN");
+        Optional<Role> role1Tmp = roleService.findByNom("ADMIN");
         if(!role1Tmp.isPresent())
         {
             roleService.save(role1);
@@ -52,40 +52,25 @@ public class DemoRole implements CommandLineRunner {
         
         
         Role role2 = new Role();
-        role2.setNom("ADMIN");
-        Optional<Role> role2Tmp = roleService.findByNom("ADMIN");
+        role2.setNom("EMPLOYE");
+        Optional<Role> role2Tmp = roleService.findByNom("EMPLOYE");
         if(!role2Tmp.isPresent())
         {
             roleService.save(role2);
         }
         
+        
+        
+        Role role3 = new Role();
+        role3.setNom("CLIENT");
+        Optional<Role> role3Tmp = roleService.findByNom("CLIENT");
+        if(!role3Tmp.isPresent())
+        {
+            roleService.save(role3);
+        }
+        
 
-        /*
-        Utilisateur user1 = new Utilisateur();
-        user1.setLogin("bob2");
-        user1.setNom("FFFF");
-        user1.setPrenom("MMMM");
-        user1.setMotDePasse(bCryptPasswordEncoder.encode("aaaaaa"));
-        user1.setRole(role1);
-        if(utilisateurService.findByLogin("bob2").get() == null)
-        {
-            utilisateurService.save(user1);
-        }
-        
-        
-        
-        Utilisateur user2 = new Utilisateur();
-        user2.setLogin("bob3");
-        user2.setNom("III");
-        user2.setPrenom("OOO");
-        user2.setMotDePasse(bCryptPasswordEncoder.encode("aaaaaa"));
-        user2.setRole(role2);
-        if(utilisateurService.findByLogin("bob3").get() == null)
-        {
-            
-            utilisateurService.save(user2);
-        }
-*/
+      
         
     }
 

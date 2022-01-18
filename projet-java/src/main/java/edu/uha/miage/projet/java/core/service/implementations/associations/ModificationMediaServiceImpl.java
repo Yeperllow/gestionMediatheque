@@ -13,11 +13,13 @@ import edu.uha.miage.projet.java.core.service.associations.ModificationMediaServ
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Implémentation de l'interface ModificationMediaService </br> Utiliser cette classe pour accéder aux données de la table "MODIFIE_MEDIA"
  * @author quentin
  */
+@Service
 public class ModificationMediaServiceImpl implements ModificationMediaService{
 
     /**

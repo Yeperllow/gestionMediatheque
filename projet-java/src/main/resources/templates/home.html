@@ -10,8 +10,14 @@
 
                     <li class="breadcrumb-item active"><div layout:fragment="title-2">Liste des médias</li>
                 </ol>
-                <div class="box_general padding_bottom">
 
+                <div class="box_general padding_bottom">
+                    <div class="row clearfix">
+                        <div class="col-sm-1" th:each="tag : ${tags}">
+                            <a th:href="@{/medias(tag=${tag.id})}" th:text="${tag.nom}" class="badge badge-primary"></a>
+                        </div>
+
+                    </div><br>
 
 
                     <div class="row clearfix">
@@ -23,12 +29,12 @@
                                     <p class="card-text">
                                         <span th:each="tag : ${media.listTag}" th:text="${tag.tag.nom}" class="badge badge-info"></span>
                                     </p>
-                                    
+
                                     <span th:if="${media.etat}" class="card-link badge badge-success">Disponible</span>
                                     <span th:unless="${media.etat}" class="card-link badge badge-danger">Indisponible</span>
-                                    
-                                    
-                                    <a th:href="@{'/emprunt/create?id='+ ${media.id}}" class="card-link">Effectuer un emprunt</a>
+
+
+                                    <a th:if="${media.etat}" th:href="@{'/emprunt/create?id='+ ${media.id}}" class="card-link">Effectuer un emprunt</a>
                                 </div>
                             </div>
                         </div>

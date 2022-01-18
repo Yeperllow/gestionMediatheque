@@ -6,14 +6,23 @@
 package edu.uha.miage.projet.java.web.controller;
 
 
+import edu.uha.miage.projet.java.core.metier.Media;
 import edu.uha.miage.projet.java.core.metier.Type;
+import edu.uha.miage.projet.java.core.metier.Utilisateur;
+import edu.uha.miage.projet.java.core.metier.associations.ModificationMedia;
+import edu.uha.miage.projet.java.core.metier.associations.ModificationType;
 import edu.uha.miage.projet.java.core.models.TypeModel;
 import edu.uha.miage.projet.java.core.service.TypeService;
+import edu.uha.miage.projet.java.core.service.UtilisateurService;
+import edu.uha.miage.projet.java.core.service.associations.ModificationTypeService;
+import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +48,14 @@ public class TypeController {
    
     @Autowired
     MessageSource messageSource;
+    
+    @Autowired
+    UtilisateurService utilisateurService;
+    
+    @Autowired
+    ModificationTypeService modificationTypeService;
+    
+    
 
     @RequestMapping(method = RequestMethod.GET)
     public String findAll(Model model, /* #### V3.0 #### */HttpSession session) {
@@ -87,7 +104,16 @@ public class TypeController {
             return "type/edit";
          }
 
-        typeService.save(type);
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utilisateur utilisateur = utilisateurService.findByLogin(user.getUsername()).get();
+        
+        ModificationType modificationType = new ModificationType();
+        modificationType.setType(type);
+        modificationType.setUtilisateur(utilisateur);
+        modificationType.setDateModification(new Date(System.currentTimeMillis()));
+        modificationTypeService.save(modificationType);
+        
+        //System.out.println("UOOOOOOOOO");
         return "redirect:/type";
     }
 
@@ -97,6 +123,21 @@ public class TypeController {
         typeService.delete(id);
         
         return "redirect:/type";
+    }
+    
+    @GetMapping("/recherche")
+    public String rechercher(Model model) {
+        
+        model.addAttribute("type", new Type());
+        return "type/recherche";
+    }
+    
+    
+    @PostMapping("/recherche")
+    public String rechercherResult(Model model, Type type) {
+        
+        model.addAttribute("types", typeService.findByNomContaining(type.getNom()));
+        return "type/list";
     }
 /*
     @ExceptionHandler({SQLException.class, DataAccessException.class, DataIntegrityViolationException.class})

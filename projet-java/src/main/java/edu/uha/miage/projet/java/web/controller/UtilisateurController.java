@@ -5,19 +5,25 @@
  */
 package edu.uha.miage.projet.java.web.controller;
 
+import edu.uha.miage.projet.java.core.metier.Role;
+import edu.uha.miage.projet.java.core.metier.Type;
 import edu.uha.miage.projet.java.core.models.UtilisateurModel;
 import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.service.RoleService;
 import edu.uha.miage.projet.java.core.service.UtilisateurService;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,64 +56,221 @@ public class UtilisateurController {
     
     
 
-    @GetMapping("/employe")
-    public String findAll(Model model, /* #### V3.0 #### */HttpSession session) {
-        model.addAttribute("employes", utilisateurService.findAll());
+    @GetMapping({"/employe", "/client"})
+    public String findAll(Model model, HttpServletRequest request) {
+        model.addAttribute("utilisateurs", utilisateurService.findAll());
         
-        return "employe/list";
+        if(request.getRequestURI().startsWith("/employe"))
+        {
+            model.addAttribute("role", "EMPLOYE");
+        }
+        
+        if(request.getRequestURI().startsWith("/client"))
+        {
+            model.addAttribute("role", "CLIENT");
+        }
+        return "utilisateur/list";
     }
 
-    @GetMapping("/employe/create")
-    public String createEmploye(Model model,  /* #### V3.0 #### */HttpSession session,  /* #### V3.0 #### */HttpServletRequest request) {
+    @GetMapping({"/employe/create", "/client/create"})
+    public String createEmploye(Model model, HttpServletRequest request) {
         Utilisateur utilisateur = new Utilisateur();
         model.addAttribute("utilisateur", utilisateur);
-        model.addAttribute("roles", roleService.findAll());
+        
+        List<Role> roles = new ArrayList<>();
+        if(request.getRequestURI().startsWith("/employe"))
+        {
+            roles.add(roleService.findByNom("EMPLOYE").get());
+            model.addAttribute("roles", roles );
+        }
+        
+        if(request.getRequestURI().startsWith("/client"))
+        {
+            roles.add(roleService.findByNom("CLIENT").get());
+            model.addAttribute("roles", roles);
+        }
                
-        return "employe/edit";
+        return "utilisateur/edit";
     }
 
-    @PostMapping("/employe/create")
-    public String created(Model model, @Valid Utilisateur utilisateur, BindingResult br) {
+    @PostMapping({"/employe/create", "/client/create"})
+    public String created(Model model, @Valid Utilisateur utilisateur, BindingResult br, HttpServletRequest request) {
         
-        model.addAttribute("roles", roleService.findAll());
+        List<Role> roles = new ArrayList<>();
+        
+        if(request.getRequestURI().startsWith("/employe"))
+        {
+            roles.add(roleService.findByNom("EMPLOYE").get());
+            model.addAttribute("roles", roles );
+        }
+        else
+        {
+            roles.add(roleService.findByNom("CLIENT").get());
+            model.addAttribute("roles", roles);
+        }
+        
         if (br.hasErrors()) {
-            return "employe/edit";
+            return "utilisateur/edit";
         }
         if (!UtilisateurModel.tryToSave(utilisateurService, bCryptPasswordEncoder,utilisateur, br)) {
-          return "employe/edit";
+          return "utilisateur/edit";
         }
         
-        return "redirect:/employe";
+        if(request.getRequestURI().startsWith("/employe"))
+        {
+            return "redirect:/employe";
+        }
+        
+        else
+        {
+            return "redirect:/client";
+        }        
+        
     }
 
-    @GetMapping("/employe/edit")
-    public String edit(@RequestParam(name = "id") int id, Model model) {
+    @GetMapping({"/employe/edit", "/client/edit"})
+    public String edit(@RequestParam(name = "id") int id, Model model, HttpServletRequest request) {
         
         model.addAttribute("utilisateur", utilisateurService.findById(id).get());
-        model.addAttribute("roles", roleService.findAll());
-        return "employe/edit";
+        
+        List<Role> roles = new ArrayList<>();
+        if(request.getRequestURI().startsWith("/employe"))
+        {
+            roles.add(roleService.findByNom("EMPLOYE").get());
+            model.addAttribute("roles", roles );
+        }
+        else
+        {
+            if(request.getRequestURI().startsWith("/client"))
+            {
+                roles.add(roleService.findByNom("CLIENT").get());
+                model.addAttribute("roles", roles);
+            }
+            
+        }
+        return "utilisateur/edit";
     }
 
-    @PostMapping("/employe/edit")
-    public String edited(Model model, @Valid Utilisateur utilisateur, BindingResult br, String lang) {
-        model.addAttribute("roles", roleService.findAll());
+    @PostMapping({"/employe/edit", "/client/edit"})
+    public String edited(Model model, @Valid Utilisateur utilisateur, BindingResult br, HttpServletRequest request) {
+        List<Role> roles = new ArrayList<>();
+        
+        if(request.getRequestURI().startsWith("/employe"))
+        {
+            roles.add(roleService.findByNom("EMPLOYE").get());
+            model.addAttribute("roles", roles );
+        }
+        else
+        {
+            if(request.getRequestURI().startsWith("/client"))
+            {
+                roles.add(roleService.findByNom("CLIENT").get());
+                model.addAttribute("roles", roles);
+            }
+            
+        }
+        
         if (br.hasErrors()) {
-            return "employe/edit";
+            return "utilisateur/edit";
         }
 
-        if (!UtilisateurModel.tryToUpdate(utilisateurService, utilisateur, br)) {
-            return "employe/edit";
+        if (!UtilisateurModel.tryToUpdate(utilisateurService, bCryptPasswordEncoder, utilisateur, br)) {
+            return "utilisateur/edit";
          }
 
-        return "redirect:/employe";
+        
+        if(request.getRequestURI().startsWith("/employe"))
+        {
+            return "redirect:/employe";
+        }
+        else
+        {
+            return "redirect:/client";
+            
+        }
     }
 
-    @GetMapping("/employe/delete/{id}")
-    public String delete(@PathVariable("id") int id, String lang) {
+    @GetMapping({"/employe/delete/{id}", "/client/delete/{id}"})
+    public String delete(@PathVariable("id") int id, HttpServletRequest request) {
 
         utilisateurService.delete(id);
-        return "redirect:/employe";
+        if(request.getRequestURI().startsWith("/employe"))
+        {
+            return "redirect:/employe";
+        }
+        else
+        {
+            return "redirect:/client";
+            
+        }
     }
+    
+    
+    @GetMapping("/parametre")
+    public String parametre(Model model) {
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utilisateur utilisateur = utilisateurService.findByLogin(user.getUsername()).get();
+        List<Role> roles = new ArrayList<>();
+        roles.add(utilisateur.getRole());
+        
+        model.addAttribute("utilisateur", utilisateur);
+        model.addAttribute("roles", roles);
+        
+        
+        return "utilisateur/edit";
+    }
+    
+    
+    @PostMapping({"/parametre"})
+    public String parametreEdited(Model model, @Valid Utilisateur utilisateur, BindingResult br, HttpServletRequest request) {
+        
+        
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        Utilisateur user = utilisateurService.findByLogin(userDetails.getUsername()).get();
+        
+        utilisateur.setId(user.getId());
+        
+        List<Role> roles = new ArrayList<>();
+        roles.add(user.getRole());
+        
+        model.addAttribute("roles", roles);
+        
+        if (br.hasErrors()) {
+            return "utilisateur/edit";
+        }
+
+        if (!UtilisateurModel.tryToUpdate(utilisateurService, bCryptPasswordEncoder, utilisateur, br)) {
+            return "utilisateur/edit";
+         }
+
+       
+        return "redirect:/parametre";
+    }
+    
+    
+    
+    @GetMapping({"/employe/recherche", "/client/recherche"})
+    public String rechercher(Model model, HttpServletRequest request) {
+        
+        
+        model.addAttribute("utilisateur", new Utilisateur());
+        return "utilisateur/recherche";
+    }
+    
+    
+    @PostMapping({"/employe/recherche", "/client/recherche"})
+    public String rechercherResult(Model model, Utilisateur utilisateur, HttpServletRequest request) {
+        
+        model.addAttribute("utilisateurs", utilisateurService.findByLoginContainingOrNomContainingOrPrenomContaining(utilisateur.getLogin(), utilisateur.getNom(), utilisateur.getPrenom()));
+        return "utilisateur/list";
+    }
+    
+    
+    
+    
+    
+    
 
     @ExceptionHandler({SQLException.class, DataAccessException.class, DataIntegrityViolationException.class})
     public String databaseError(Exception exception, Model model) {
@@ -117,11 +280,5 @@ public class UtilisateurController {
         return "databaseerror";
     }
 
-    /*@ExceptionHandler(Exception.class)
-    public String otherError(HttpServletRequest req, Exception exception, Model model) {
-
-        model.addAttribute("exception", exception);
-
-        return "otherError";
-    }*/
+    
 }

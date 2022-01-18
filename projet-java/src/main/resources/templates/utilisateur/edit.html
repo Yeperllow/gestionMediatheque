@@ -54,7 +54,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="tag">Mot de passe</label>
-                                        <input type="text" class="form-control" th:field="*{motDePasse}" id="tag">
+                                        <input type="password" class="form-control" th:field="*{motDePasse}" id="tag">
                                         <span th:if="${#fields.hasErrors('motDePasse')}" th:errors="*{motDePasse}" />
                                     </div>
                                 </div>

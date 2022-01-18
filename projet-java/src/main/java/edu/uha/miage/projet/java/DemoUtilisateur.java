@@ -66,7 +66,7 @@ public class DemoUtilisateur implements CommandLineRunner {
         user1.setPrenom("MMMM");
         user1.setMotDePasse(bCryptPasswordEncoder.encode("aaaaaa"));
         
-        Optional<Role> role1Tmp = roleService.findByNom("USER");
+        Optional<Role> role1Tmp = roleService.findByNom("EMPLOYE");
         if(!role1Tmp.isPresent())
         {
             roleService.save(role1Tmp.get());

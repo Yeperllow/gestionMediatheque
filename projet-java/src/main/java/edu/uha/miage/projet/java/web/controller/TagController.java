@@ -9,6 +9,7 @@ import edu.uha.miage.projet.java.core.metier.Tag;
 import edu.uha.miage.projet.java.core.metier.Utilisateur;
 import edu.uha.miage.projet.java.core.models.TagModel;
 import edu.uha.miage.projet.java.core.service.TagService;
+import edu.uha.miage.projet.java.core.service.UtilisateurService;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -40,6 +42,9 @@ public class TagController {
 
     @Autowired
     TagService tagService;
+    
+    @Autowired
+    UtilisateurService utilisateurService;
 
     @Autowired
     MessageSource messageSource;
@@ -51,8 +56,9 @@ public class TagController {
         model.addAttribute("success", false);
         model.addAttribute("fail", false);
         model.addAttribute("message", false);
-        Utilisateur user = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("role", user.getRole().getNom());
+        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utilisateur utilisateur = utilisateurService.findByLogin(user.getUsername()).get();
+        model.addAttribute("role", utilisateur.getRole().getNom());
 
         return "tag/list";
     }
@@ -67,8 +73,7 @@ public class TagController {
 
     @PostMapping("/create")
     public String created(@Valid Tag tag, BindingResult br, String lang) {
-        System.out.println("errrrrrrr");
-        System.out.println(br);
+
         if (br.hasErrors()) {
             return "tag/edit";
         }
@@ -76,7 +81,6 @@ public class TagController {
             return "tag/edit";
         }
 
-        //tagService.save(tag);
         return "redirect:/tag";
     }
 
@@ -106,6 +110,22 @@ public class TagController {
 
         tagService.delete(id);
         return "redirect:/tag";
+    }
+    
+    
+    @GetMapping("/recherche")
+    public String rechercher(Model model) {
+        
+        model.addAttribute("tag", new Tag());
+        return "tag/recherche";
+    }
+    
+    
+    @PostMapping("/recherche")
+    public String rechercherResult(Model model, Tag tag) {
+        
+        model.addAttribute("tags", tagService.findByNomContaining(tag.getNom()));
+        return "tag/list";
     }
 
     @ExceptionHandler({SQLException.class, DataAccessException.class, DataIntegrityViolationException.class})

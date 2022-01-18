@@ -23,7 +23,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,8 +49,23 @@ public class EmprunteMediaController {
     MessageSource messageSource;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String findAll(Model model, /* #### V3.0 #### */HttpSession session) {
-        model.addAttribute("emprunts", empruntService.findAll());
+    public String findAll(Model model, HttpSession session) {
+        
+        
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utilisateur utilisateur = utilisateurService.findByLogin(user.getUsername()).get();
+        System.out.println("OOOOOOOO");
+        if(utilisateur.getRole().getNom().equals("CLIENT"))
+        {
+            
+            model.addAttribute("emprunts", empruntService.findByUtilisateur(utilisateur));
+        }
+        else {
+            if(utilisateur.getRole().getNom().equals("EMPLOYE"))
+            {
+                model.addAttribute("emprunts", empruntService.findAll());
+            }
+        }
         
         return "emprunt/list";
     }
@@ -85,28 +99,7 @@ public class EmprunteMediaController {
         return "redirect:/emprunt";
     }
 
-    /*@GetMapping("/employe/edit")
-    public String edit(@RequestParam(name = "id") int id, Model model) {
-        
-        model.addAttribute("utilisateur", utilisateurService.findById(id).get());
-        model.addAttribute("roles", roleService.findAll());
-        return "employe/edit";
-    }
-
-    @PostMapping("/employe/edit")
-    public String edited(Model model, @Valid Utilisateur utilisateur, BindingResult br, String lang) {
-        model.addAttribute("roles", roleService.findAll());
-        if (br.hasErrors()) {
-            return "employe/edit";
-        }
-
-        if (!UtilisateurModel.tryToUpdate(utilisateurService, utilisateur, br)) {
-            return "employe/edit";
-         }
-
-        return "redirect:/employe";
-    }
-*/
+   
     @GetMapping("/delete")
     public String delete(@RequestParam(name = "utilisateur") int utilisateur, @RequestParam(name = "media") int media) {
         
@@ -117,19 +110,5 @@ public class EmprunteMediaController {
         return "redirect:/emprunt";
     }
 
-    /*@ExceptionHandler({SQLException.class, DataAccessException.class, DataIntegrityViolationException.class})
-    public String databaseError(Exception exception, Model model) {
-        
-        model.addAttribute("exception", exception);
-        
-        return "databaseerror";
-    }
-
-    @ExceptionHandler(Exception.class)
-    public String otherError(HttpServletRequest req, Exception exception, Model model) {
-
-        model.addAttribute("exception", exception);
-
-        return "otherError";
-    }*/
+    
 }

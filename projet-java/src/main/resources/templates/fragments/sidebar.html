@@ -1,21 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <a class="navbar-brand" href=""></a>
+    <a class="navbar-brand" th:href="@{'/'}"><ion-icon name="arrow-back-outline"></ion-icon> Retour au site</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="">
-                    <ion-icon name="clipboard-outline"></ion-icon>
-                    <span class="nav-link-text">Tableau de bord</span>
-                </a>
-            </li>
-
-
-
             
-            <li th:if="${role == 'ADMIN'}" class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+            <li th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'EMPLOYE')}" class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                 <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/tag')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseTag" data-parent="#exampleAccordion">
                     <ion-icon name="bookmark-outline"></ion-icon>
                     <span class="nav-link-text">Gestion des tag</span>
@@ -27,11 +18,22 @@
                     <li>
                         <a th:href="@{/tag}">Liste des tags</a>
                     </li>
+                    <li>
+                        <a th:href="@{/tag/recherche}">Rechercher un tag</a>
+                    </li>
                 </ul>
             </li>
 
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
+            <li th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'EMPLOYE')}" class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
+                <a th:href="@{/emprunt}" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/emprunt')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" href="{{ URL::to('/proche') }}">
+                    <ion-icon name="bookmarks-outline"></ion-icon>
+                    <span class="nav-link-text">Liste des emprunts</span>
+                </a>
+            </li>
+            
+            
+            <li th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'CLIENT')}" class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
                 <a th:href="@{/emprunt}" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/emprunt')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" href="{{ URL::to('/proche') }}">
                     <ion-icon name="bookmarks-outline"></ion-icon>
                     <span class="nav-link-text">Liste des emprunts</span>
@@ -41,7 +43,7 @@
            
 
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+            <li th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'EMPLOYE')}" class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                 <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/media')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseMedia" data-parent="#exampleAccordion">
                     <ion-icon name="folder-outline"></ion-icon>
                     <span class="nav-link-text">Gestion des médias</span>
@@ -53,10 +55,13 @@
                     <li>
                         <a th:href="@{/media}">Liste des médias</a>
                     </li>
+                    <li>
+                        <a th:href="@{/media/recherche}">Rechercher un média</a>
+                    </li>
                 </ul>
             </li>
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+            <li th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'EMPLOYE')}" class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                 <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/type')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseeType" data-parent="#exampleAccordion">
                     <ion-icon name="keypad-outline"></ion-icon>
                     <span class="nav-link-text">Gestion des types</span>
@@ -68,12 +73,15 @@
                     <li>
                         <a th:href="@{/type}">Liste des types</a>
                     </li>
+                     <li>
+                        <a th:href="@{/type/recherche}">Rechercher un média</a>
+                    </li>
                 </ul>
             </li>
 
 
 
-            <li th:if="${role == 'USER'}" class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+            <li th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'ADMIN')}" class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                 <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/employe')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseEmploye" data-parent="#exampleAccordion">
                     <ion-icon name="people-outline"></ion-icon>
                     <span class="nav-link-text">Gestion des employés</span>
@@ -85,28 +93,38 @@
                     <li>
                         <a th:href="@{/employe}">Liste des employés</a>
                     </li>
+                    <li>
+                        <a th:href="@{/employe/recherche}">Rechercher un employé</a>
+                    </li>
+                </ul>
+            </li>
+            
+            
+            <li th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'EMPLOYE')}" class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+                <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/client')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseEmploye" data-parent="#exampleAccordion">
+                    <ion-icon name="people-outline"></ion-icon>
+                    <span class="nav-link-text">Gestion des clients</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseEmploye">
+                    <li>
+                        <a th:href="@{/client/create}">Ajout des clients</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/client}">Liste des clients</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/client/recherche}">Rechercher un client</a>
+                    </li>
                 </ul>
             </li>
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-                <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/role')} ? 'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" data-toggle="collapse" href="#collapseRole" data-parent="#exampleAccordion">
-                    <ion-icon name="document-outline"></ion-icon>
-                    <span class="nav-link-text">Gestion des rôles</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseRole">
-                    <li>
-                        <a th:href="@{/role/create}">Edition d'un rôle</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/role}">Liste des rôles</a>
-                    </li>
-                </ul>
-            </li>
 
 
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
-                <a class="nav-link {{ (Request::segment(1) == 'parametre' ? 'active' : '') }}" href="{{ URL::to('/parametre') }}">
+                <a th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/parametre')} ? 
+                   'nav-link nav-link-collapse collapsed active' : 'nav-link nav-link-collapse collapsed'" 
+                   th:href="@{/parametre}">
                     <ion-icon name="settings-outline"></ion-icon>
                     <span class="nav-link-text">Paramètres du compte</span>
                 </a>

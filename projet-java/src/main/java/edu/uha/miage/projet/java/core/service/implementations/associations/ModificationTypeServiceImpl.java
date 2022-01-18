@@ -13,11 +13,13 @@ import edu.uha.miage.projet.java.core.service.associations.ModificationTypeServi
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Implémentation de l'interface ModificationTypeService </br> Utiliser cette classe pour accéder aux données de la table "MODIFIE_TYPE"
  * @author quentin
  */
+@Service
 public class ModificationTypeServiceImpl implements ModificationTypeService{
 
     /**
