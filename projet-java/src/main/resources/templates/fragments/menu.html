@@ -4,20 +4,21 @@
         <div class="col-sm">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
+                    <div sec:authorize="isAuthenticated()">
+                        <a th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'CLIENT')}" 
+                           th:href="@{/emprunt}" th:text="'Accéder aux emprunts'" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/')} 
+                           ? 'nav-link active' : 'nav-link'" />
 
-                    <a th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'CLIENT')}" 
-                       th:href="@{/emprunt}" th:text="'Accéder aux emprunts'" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/')} 
-                       ? 'nav-link active' : 'nav-link'" />
-                    
-                    <a th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'EMPLOYE')}" 
-                       th:href="@{/client}" th:text="'Accéder aux clients'" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/')} 
-                       ? 'nav-link active' : 'nav-link'" />
-                    
-                    <a th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'ADMIN')}" 
-                       th:href="@{/employe}" th:text="'Accéder aux employés'" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/')} 
-                       ? 'nav-link active' : 'nav-link'" />
+                        <a th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'EMPLOYE')}" 
+                           th:href="@{/client}" th:text="'Accéder aux clients'" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/')} 
+                           ? 'nav-link active' : 'nav-link'" />
+
+                        <a th:if="${#strings.equals(#authentication.getPrincipal().getAuthorities()[0], 'ADMIN')}" 
+                           th:href="@{/employe}" th:text="'Accéder aux employés'" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/')} 
+                           ? 'nav-link active' : 'nav-link'" />
+                    </div>              
                 </li>
- 
+
             </ul>
         </div>	
     </div>
