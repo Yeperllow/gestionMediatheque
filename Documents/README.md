@@ -5,7 +5,7 @@ Ce rendu contient le [fichier](Sans%20titre.loo) permettant d'ouvrir le MCD/MLD 
 
 ---
 ## Maquette
-De plus, la maquette du projet (en cours) est visible [ici](https://www.figma.com/file/un9vhlDOD075bUpPSiq4Rp/Projet-java?node-id=0%3A1).
+De plus, la maquette du projet est visible [ici](https://www.figma.com/file/un9vhlDOD075bUpPSiq4Rp/Projet-java?node-id=0%3A1) pour une version interactive, ou [ici](Maquette.pdf) pour la version pdf.
 
 ---
 ## UML
