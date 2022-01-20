@@ -1,0 +1,12 @@
+edu.uha.miage.projet.java
+edu.uha.miage.projet.java.core.metier
+edu.uha.miage.projet.java.core.metier.associations
+edu.uha.miage.projet.java.core.models
+edu.uha.miage.projet.java.core.repository
+edu.uha.miage.projet.java.core.repository.associations
+edu.uha.miage.projet.java.core.service
+edu.uha.miage.projet.java.core.service.associations
+edu.uha.miage.projet.java.core.service.implementations
+edu.uha.miage.projet.java.core.service.implementations.associations
+edu.uha.miage.projet.java.security
+edu.uha.miage.projet.java.web.controller

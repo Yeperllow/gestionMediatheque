@@ -65,7 +65,7 @@ public class TypeServiceImpl implements TypeService{
 
     /**
      * Fonction permettant d'obtenir un objet de type Type dont le nom de type correspond à celui indiqué
-     * @param tag le nom du type que l'on veut obtenir
+     * @param type le nom du type que l'on veut obtenir
      * @return Un objet de type Type dont le nom de type correspond à celui indiqué, null sinon
      */
     @Override

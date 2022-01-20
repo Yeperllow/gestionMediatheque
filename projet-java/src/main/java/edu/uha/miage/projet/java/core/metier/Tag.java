@@ -55,7 +55,7 @@ public class Tag implements Serializable {
     
     /**
      * Constructeur de la classe Tag
-     * @param tag un String correspondant au nom du tag
+     * @param nom un String correspondant au nom du tag
      * @param etat un boolean correspondant à l'état du tag (true pour actif, false pour désactivé)
      * @param dateCreation Un objet de type Date correspondant à la date de création de l'objet
      */
@@ -107,7 +107,7 @@ public class Tag implements Serializable {
 
     /**
      * Setter du champs tag
-     * @param tag un String correspondant au nouveau nom du tag
+     * @param nom un String correspondant au nouveau nom du tag
      */
     public void setNom(String nom) {
         this.nom = nom;

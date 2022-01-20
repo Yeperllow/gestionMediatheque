@@ -14,7 +14,7 @@ import org.springframework.validation.BindingResult;
 
 /**
  *
- * @author Yvan Maillot <yvan.maillot@uha.fr>
+ * @author kangacedricmarshallfry
  */
 public class EmprunteMediaModel implements Serializable {
 

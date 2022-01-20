@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Yvan Maillot <yvan.maillot@uha.fr>
+ * @author kangacedricmarshallfry
  */
 public class DecritMediaModel implements Serializable {
 

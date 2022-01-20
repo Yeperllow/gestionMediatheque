@@ -262,7 +262,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
      * utilisateurs de la base de données
      * @param nom String que l'on veut chercher dans les noms des utilisateurs
      * de la base de données
-     * @param prenomString que l'on veut chercher dans les prénoms des
+     * @param prenom que l'on veut chercher dans les prénoms des
      * utilisateurs de la base de données
      * @return Une List contenant tous les utilisateurs dont le login, le nom ou
      * le prénom contient respectivement les Strings donnés en paramètre
